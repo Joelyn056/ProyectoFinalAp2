@@ -26,7 +26,7 @@ namespace ProyectoFinalAp2.UI.Registros
         {
             if(!Page.IsPostBack)
             {
-                FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
 
                 ViewState["Detalle"] = new FacturaDetalles();
                 LlenarDropDownListProductos();
@@ -76,7 +76,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private void Limpiar()
         {
             FacturaIdTextBox.Text = string.Empty;
-            FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
             ClienteDropDownList.SelectedIndex = 0;
             ProductoDropDownList.SelectedIndex = 0;
             CantidadTextBox.Text = string.Empty;

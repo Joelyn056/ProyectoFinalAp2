@@ -14,13 +14,13 @@ namespace ProyectoFinalAp2.UI.Registros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
         }
 
         private void Limpiar()
         {
             ProductoIdTextBox.Text = string.Empty;
-            FechaTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            FechaTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
             DescripcionTextBox.Text = string.Empty;
             CostoTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
@@ -45,7 +45,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private void LlenaCampo(Productos p)
         {
             ProductoIdTextBox.Text = p.ProductoId.ToString();
-            FechaTextBox.Text = p.FechaRegistro.ToString("yyyy-MM-dd");
+            FechaTextBox.Text = p.FechaRegistro.ToString("dd-MM-yyyy");
             DescripcionTextBox.Text = p.Descripcion;
             CostoTextBox.Text = p.Costo.ToString();
             PrecioTextBox.Text = p.Precio.ToString();

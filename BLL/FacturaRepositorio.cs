@@ -10,7 +10,7 @@ using Entidades;
 
 namespace BLL
 {
-    class FacturaRepositorio : Repositorio<Facturas>
+    public class FacturaRepositorio : Repositorio<Facturas>
     {
         public override Facturas Buscar(int id)
         {

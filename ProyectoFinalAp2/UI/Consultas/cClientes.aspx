@@ -57,7 +57,7 @@
                     <asp:TextBox ID="BuscarTextBox" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-lg-1 p-0">
-                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server"> <span class="fas fa-search"></span>Buscar </asp:LinkButton>
+                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server" OnClick="BuscarLinkButton_Click"> <span class="fas fa-search"></span>Buscar </asp:LinkButton>
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
             <!--Imprmir-->
             <div class="row justify-content-end">
                 <div class="col-lg-2">
-                    <asp:LinkButton ID="ImprimirLinkButton" CssClass=" btn btn-warning" runat="server"> 
+                    <asp:LinkButton ID="ImprimirLinkButton" CssClass=" btn btn-warning" runat="server" OnClick="ImprimirLinkButton_Click"> 
                         <span class="fas fa-print"></span>
                         Imprimi
                     </asp:LinkButton>

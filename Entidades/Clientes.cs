@@ -11,6 +11,7 @@ namespace Entidades
     {
         [Key]
         public int ClienteId { get; set; }
+        public DateTime Fecha { get; set; }
         public string Nombres { get; set; }
         public int Edad { get; set; }
         public string Sexo { get; set; }
@@ -25,6 +26,7 @@ namespace Entidades
         {
             ClienteId = 0;
             Nombres = string.Empty;
+            Fecha = DateTime.Now;
             Edad = 0;
             Sexo = string.Empty;
             Ciudad = string.Empty;

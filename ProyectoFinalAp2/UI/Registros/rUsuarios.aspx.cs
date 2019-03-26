@@ -18,7 +18,7 @@ namespace ProyectoFinalAp2.UI.Registros
             if(!Page.IsPostBack)
             {               
                 LlenarDropDown();
-                FechaTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                FechaTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
                 int id = ToInt(Request.QueryString["id"]);
 
                 if(id >0)
@@ -92,7 +92,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private void Limpiar()
         {
             UsuarioIdTextBox.Text = string.Empty;
-            FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
             NombreTextBox.Text = string.Empty;
             TipoUsuarioDropDownList.SelectedIndex = 0;
             ContraseñaTextBox.Text = string.Empty;
