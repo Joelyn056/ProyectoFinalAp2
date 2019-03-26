@@ -51,7 +51,7 @@ namespace ProyectoFinalAp2.UI.Consultas
             switch (FiltroDropDownList.SelectedIndex)
             {
                 case 0://Todo
-                    filtro = p => true; /*&& p.Fecha >= desde && p.Fecha <= hasta*/
+                    filtro = p => true && p.Fecha >= desde && p.Fecha <= hasta;
                     break;
 
                 case 1://ClienteId

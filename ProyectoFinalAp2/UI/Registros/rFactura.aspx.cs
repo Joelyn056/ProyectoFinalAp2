@@ -24,13 +24,13 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            if (!Page.IsPostBack)
             {
                 FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
 
                 ViewState["Detalle"] = new FacturaDetalles();
-               // LlenarDropDownListProductos();
-                //LlenarDropDownListClientes();
+                LlenarDropDownListProductos();
+                LlenarDropDownListClientes();
             }
 
         }
@@ -82,7 +82,7 @@ namespace ProyectoFinalAp2.UI.Registros
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
             ImporteTextBox.Text = string.Empty;
-            MontoTextBox.Text = string.Empty;           
+            MontoTextBox.Text = string.Empty;
             FacturaGridView.DataSource = null;
             ViewState["Detalle"] = null;
 
@@ -91,7 +91,7 @@ namespace ProyectoFinalAp2.UI.Registros
 
         private void LlenarCampo(Facturas facturas)
         {
-            ClienteDropDownList.DataSource = repositorioProducto.GetList(x =>true);
+            ClienteDropDownList.DataSource = repositorioProducto.GetList(x => true);
             ProductoDropDownList.DataValueField = "ProductoId";
             ProductoDropDownList.DataTextField = "Descripcion";
             ProductoDropDownList.AppendDataBoundItems = true;
@@ -123,7 +123,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private string SubTotal()
         {
             decimal monto = 0;
-            foreach (var item in (List<FacturaDetalles>) ViewState["Detalle"] )
+            foreach (var item in (List<FacturaDetalles>)ViewState["Detalle"])
             {
 
                 monto += FacturasBLL.CalcularSubTotal(item.Importe);
@@ -134,11 +134,11 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
-            if(! isRefresh)
+            if (!isRefresh)
             {
                 facturas = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
 
-                if(facturas != null)
+                if (facturas != null)
                 {
                     CallModal("Se encontro la factura");
                     LlenarCampo(facturas);
@@ -199,33 +199,68 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void AddLinkButton_Click(object sender, EventArgs e)
         {
-            if (facturas != null)
-            {
-                if (facturas.Detalle.Exists(x => x.ProductoId.Equals(ToInt(ProductoDropDownList.SelectedValue))))
+            if (IsValid)
+            {/*
+                if (FacturaGridView.Rows.Count != 0)
                 {
-                    var producto = facturas.Detalle.Where(x => x.ProductoId.Equals(ToInt(ProductoDropDownList.SelectedValue)));
-
+                    facturas.Detalle = (List<FacturaDetalles>)ViewState["Detalle"];
                 }
 
-                if (((FacturaDetalles)ViewState["Detalle"]).Id != 0)
+                if (facturas != null)
                 {
-                    facturas.Detalle.Add(new FacturaDetalles(((FacturaDetalles)ViewState["Detalle"]).Id, facturas.FacturaId,ToInt(ProductoDropDownList.SelectedValue), 
-                        ProductoDropDownList.Text,ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
+                    if (facturas.Detalle.Exists(x => x.ProductoId.Equals(ToInt(ProductoDropDownList.SelectedValue))))
+                    {
+                        var producto = facturas.Detalle.Where(x => x.ProductoId.Equals(ToInt(ProductoDropDownList.SelectedValue)));
+
+                    }
+
+                    if (((FacturaDetalles)ViewState["Detalle"]).Id != 0)
+                    {
+                        facturas.Detalle.Add(new FacturaDetalles(((FacturaDetalles)ViewState["Detalle"]).Id, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue),
+                            ProductoDropDownList.Text, ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
+                    }
+                    else
+                    {
+                        facturas.Detalle.Add(new FacturaDetalles(0, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(),
+                           ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
+                        ViewState["Detalle"] = new FacturaDetalles();
+                    }
+
                 }
                 else
-                    facturas.Detalle.Add(new FacturaDetalles(0, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(), 
+                {
+                    facturas.Detalle.Add(new FacturaDetalles(0, 0, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(),
                         ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
-                ViewState["Detalle"] = new FacturaDetalles();
+                    ViewState["Detalle"] = facturas.Detalle;
+                }*/
+             //SubTotal();
+
+
+                var Ant = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
+                               
+                if(Ant == null)
+                {
+                    facturas = (Facturas)ViewState["Factura"];
+
+                    facturas.AgregarDetalle(0, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(), ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text));
+                }
+                else
+                {
+                    Ant = (Facturas)ViewState["Modificar"];
+                    Ant.Detalle.Add(new FacturaDetalles() {
+                        Id = 0,
+                        FacturaId = ToInt(FacturaIdTextBox.Text),
+                        ProductoId = ToInt(ProductoDropDownList.SelectedValue),
+                        Descripcion = ProductoDropDownList.SelectedItem.ToString(),
+                        Precio = ToDecimal(PrecioTextBox.Text),
+                        Cantidad = ToInt(CantidadTextBox.Text),
+                        Importe = ToDecimal(ImporteTextBox.Text)
+                    });
+                }
+                ViewState["Detalle"] = facturas;
+                FacturaGridView.DataSource = ViewState["Detalle"];
+                FacturaGridView.DataBind();
             }
-            else
-            {
-                facturas.Detalle.Add(new FacturaDetalles(0, 0, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(),
-                    ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
-                ViewState["Detalle"] = facturas.Detalle;
-            }
-            SubTotal();
-            FacturaGridView.DataSource = ViewState["Detalle"];
-            FacturaGridView.DataBind();
         }
 
         protected void FacturaGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
@@ -235,5 +270,9 @@ namespace ProyectoFinalAp2.UI.Registros
             FacturaGridView.DataBind();
         }
 
+        protected void ProductoDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FiltrarPrecio();
+        }
     }
 }

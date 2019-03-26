@@ -63,7 +63,7 @@
                 <%--Producto--%>
                 <div class="form-group col-md-3">
                     <asp:Label Text="Producto" runat="server" />
-                    <asp:DropDownList ID="ProductoDropDownList" CssClass="form-control" runat="server">
+                    <asp:DropDownList ID="ProductoDropDownList" AutoPostBack="true" OnSelectedIndexChanged="ProductoDropDownList_SelectedIndexChanged" CssClass="form-control" runat="server">
                         <asp:ListItem Value=""></asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="ProductoDropDownList" ValidationGroup="Guardar" ErrorMessage="Producto: Seleccione un producto" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>

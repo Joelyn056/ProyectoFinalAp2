@@ -145,7 +145,7 @@
             <div class="form-group row justify-content-center">
                 <!--Nuevo-->
                 <div class="col-lg-1 mr-1">
-                    <asp:LinkButton ID="NuevoLinkButton" CssClass="btn btn-primary" runat="server" CausesValidation="False">
+                    <asp:LinkButton ID="NuevoLinkButton" CssClass="btn btn-primary" runat="server" OnClick="NuevoLinkButton_Click" CausesValidation="False">
                         <span class="fas fa-plus"></span>
                         Nuevo
                     </asp:LinkButton>
@@ -153,7 +153,7 @@
 
                 <!--Guardar-->
                 <div class="col-lg-1 mr-3">
-                    <asp:LinkButton ID="GuardarLinkButton" CssClass="btn btn-success" runat="server">
+                    <asp:LinkButton ID="GuardarLinkButton" CssClass="btn btn-success" OnClick="GuardarLinkButton_Click" runat="server">
                         <span class="fas fa-save"></span>
                         Guardar
                     </asp:LinkButton>
@@ -161,7 +161,7 @@
 
                 <!--Eliminar-->
                 <div class="col-lg-1 mr-3">
-                    <asp:LinkButton ID="EliminarLinkButton" CssClass="btn btn-danger" runat="server" CausesValidation="False">
+                    <asp:LinkButton ID="EliminarLinkButton" CssClass="btn btn-danger" OnClick="EliminarLinkButton_Click" runat="server" CausesValidation="False">
                         <span class="fas fa-trash-alt"></span>
                         Eliminar
                     </asp:LinkButton>

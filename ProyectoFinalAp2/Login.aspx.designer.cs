@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ProyectoFinalAp2.UI.Login {
+namespace ProyectoFinalAp2 {
     
     
-    public partial class Login {
+    public partial class LogIn {
         
         /// <summary>
         /// usuarioTextBox control.
@@ -29,5 +29,14 @@ namespace ProyectoFinalAp2.UI.Login {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox passTextBox;
+        
+        /// <summary>
+        /// LoginLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton LoginLinkButton;
     }
 }

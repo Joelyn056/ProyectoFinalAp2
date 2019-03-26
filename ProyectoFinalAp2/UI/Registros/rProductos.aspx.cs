@@ -14,13 +14,13 @@ namespace ProyectoFinalAp2.UI.Registros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
+            FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private void Limpiar()
         {
             ProductoIdTextBox.Text = string.Empty;
-            FechaTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
+            FechaTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
             DescripcionTextBox.Text = string.Empty;
             CostoTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
@@ -45,7 +45,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private void LlenaCampo(Productos p)
         {
             ProductoIdTextBox.Text = p.ProductoId.ToString();
-            FechaTextBox.Text = p.FechaRegistro.ToString("dd-MM-yyyy");
+            FechaTextBox.Text = p.FechaRegistro.ToString("yyyy-MM-dd");
             DescripcionTextBox.Text = p.Descripcion;
             CostoTextBox.Text = p.Costo.ToString();
             PrecioTextBox.Text = p.Precio.ToString();
@@ -55,13 +55,27 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
-            Repositorio<Productos> rep = new Repositorio<Productos>();
-            Productos d = rep.Buscar(ToInt(ProductoIdTextBox.Text));
 
-            if (d != null)
-                LlenaCampo(d);
-            else
-                CallModal("Este producto no existe");
+            if (!isRefresh)
+            {
+                Repositorio<Productos> rep = new Repositorio<Productos>();
+                Productos p = rep.Buscar(ToInt(ProductoIdTextBox.Text));
+
+                if (p != null)
+                {
+                    LlenaCampo(p);
+                }
+                else
+                {
+                    CallModal("Este cliente no existe");
+                    Limpiar();
+                }
+                 
+
+
+
+            }
+
         }
 
         protected void NuevoLinkButton_Click(object sender, EventArgs e)
@@ -71,11 +85,11 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void GuardarLinkButton_Click(object sender, EventArgs e)
         {
-            if(Page.IsValid)
+            if(Page.IsValid && isRefresh == false)
             {
                 Repositorio<Productos> rep = new Repositorio<Productos>();
-
-                if(ToInt(ProductoIdTextBox.Text) ==0)
+                Productos p = rep.Buscar(ToInt(ProductoIdTextBox.Text));
+                if(p == null)
                 {
                     if(rep.Guardar(LlenaClase()))
                     {

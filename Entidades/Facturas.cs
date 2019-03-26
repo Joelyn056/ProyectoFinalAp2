@@ -36,5 +36,11 @@ namespace Entidades
             Total = total;
             Detalle = detalle;
         }
+
+        public void AgregarDetalle(int id, int facturaId, int productoId, string descripcion, int cantidad, decimal precio, decimal importe)
+        {
+            this.Detalle.Add(new FacturaDetalles(id, facturaId, productoId, descripcion, cantidad, precio, importe));
+        }
+
     }
 }

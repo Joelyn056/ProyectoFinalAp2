@@ -75,12 +75,11 @@
                    <%-- <asp:GridView ID="ClientesGridView" runat="server" AllowPaging="true" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="ClientesGridView_PageIndexChanging">--%>
                         <Columns>
                             <asp:BoundField DataField="ProductoId" HeaderText="ProductoId" />
-                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
+                            <asp:BoundField DataField="FechaRegistro" HeaderText="Fecha" />
                             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />                          
                             <asp:BoundField DataField="Costo" HeaderText="Costo" />
                             <asp:BoundField DataField="Precio" HeaderText="Precio" />
                             <asp:BoundField DataField="Ganancias" HeaderText="Ganancias" />
-                            <asp:BoundField DataField="Inventario" HeaderText="Inventario" />
                         </Columns>    
                     </asp:GridView>
                 </div>

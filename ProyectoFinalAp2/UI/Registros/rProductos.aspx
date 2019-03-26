@@ -20,7 +20,7 @@
                     <asp:TextBox TextMode="Number" CssClass="form-control" ID="ProductoIdTextBox" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-lg-1">
-                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary" runat="server" CausesValidation="False"> 
+                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary" runat="server" OnClick="BuscarLinkButton_Click" CausesValidation="False"> 
                         <span class="fas fa-search"></span> Buscar </asp:LinkButton>
                 </div>
             </div>
@@ -64,7 +64,7 @@
             <div class="form-group row justify-content-center">
                 <asp:Label ID="Label5" CssClass="col-lg-2 col-form-label" runat="server">Precio:</asp:Label>
                 <div class="col-lg-4">
-                    <asp:TextBox ID="PrecioTextBox" CssClass="form-control" runat="server" OnTextChanged="PrecioTextBox_TextChanged"></asp:TextBox>
+                    <asp:TextBox ID="PrecioTextBox" CssClass="form-control" runat="server" AutoPostBack="true" OnTextChanged="PrecioTextBox_TextChanged"></asp:TextBox>
                 </div>
                 <div class="col-lg-1">
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" TextMode="Number" runat="server" Text="*" ValidationGroup="Guardar" Display="Dynamic" ErrorMessage="Nombre: Debe ingresar un Precio" ControlToValidate="PrecioTextBox">*</asp:RequiredFieldValidator>
@@ -101,21 +101,21 @@
             <div class="form-group row justify-content-center">
                 <!--Nuevo-->
                 <div class="col-lg-1 mr-1">
-                    <asp:LinkButton ID="NuevoLinkButton" CssClass="btn btn-primary" runat="server" CausesValidation="False"> 
+                    <asp:LinkButton ID="NuevoLinkButton" CssClass="btn btn-primary" runat="server" OnClick="NuevoLinkButton_Click" CausesValidation="False"> 
                         <span class="fas fa-plus">
                         </span> Nuevo </asp:LinkButton>
                 </div>
 
                 <!--Guardar-->
                 <div class="col-lg-1 mr-3">
-                    <asp:LinkButton ID="GuardarLinkButton" CssClass="btn btn-success" runat="server"> 
+                    <asp:LinkButton ID="GuardarLinkButton" CssClass="btn btn-success" OnClick="GuardarLinkButton_Click" runat="server"> 
                         <span class="fas fa-save">
                        </span> Guardar </asp:LinkButton>
                 </div>
 
                 <!--Eliminar-->
                 <div class="col-lg-1 mr-3">
-                    <asp:LinkButton ID="EliminarLinkButton" CssClass="btn btn-danger" runat="server" CausesValidation="False"> 
+                    <asp:LinkButton ID="EliminarLinkButton" CssClass="btn btn-danger" OnClick="EliminarLinkButton_Click" runat="server" CausesValidation="False"> 
                         <span class="fas fa-trash-alt">
                         </span> Eliminar </asp:LinkButton>
                 </div>

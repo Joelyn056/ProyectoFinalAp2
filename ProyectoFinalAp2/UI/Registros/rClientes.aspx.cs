@@ -65,8 +65,11 @@ namespace ProyectoFinalAp2.UI.Registros
 
                 }
                 else
+                {
                     CallModal("Este cliente no existe");
                     Limpiar();
+                }
+                   
             }
         }
 

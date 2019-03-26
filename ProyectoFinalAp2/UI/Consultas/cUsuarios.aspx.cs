@@ -27,14 +27,26 @@ namespace ProyectoFinalAp2.UI.Consultas
                 //UsuariosReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteUsuarios.rdlc");
                 //UsuariosReportViewer.AsyncRendering = true;
 
-                FInicialTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
-                FFinalTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
+                FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 listUsuarios = repositorio.GetList(x => true);
             }
         }
+     
+        public static List<Usuarios> RetornarUsuarios()
+        {
+            return listUsuarios;
+        }
+
+       
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
             int id = 0;
             DateTime desde = Convert.ToDateTime(FInicialTextBox.Text);
@@ -49,7 +61,7 @@ namespace ProyectoFinalAp2.UI.Consultas
             switch (FiltroDropDownList.SelectedIndex)
             {
                 case 0://Todo
-                    filtro = p => true; /*&& p.Fecha >= desde && p.Fecha <= hasta*/
+                    filtro = p => true && p.Fecha >= desde && p.Fecha <= hasta;
                     break;
 
                 case 1://UsuarioId
@@ -64,15 +76,15 @@ namespace ProyectoFinalAp2.UI.Consultas
 
                 case 3://Usuario
                     filtro = (p => p.Usuario.Contains(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
-                    break;              
+                    break;
 
                 case 4: // NombreUsuario
                     filtro = (p => p.NombreUsuario.Equals(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
                     break;
 
-                //case 5: // Contraseña
-                //    filtro = (p => p.Contraseña.Equals(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
-                //    break;
+                    //case 5: // Contraseña
+                    //    filtro = (p => p.Contraseña.Equals(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
+                    //    break;
 
             }
 
@@ -80,12 +92,5 @@ namespace ProyectoFinalAp2.UI.Consultas
             UsuarioGridView.DataSource = listUsuarios;
             UsuarioGridView.DataBind();
         }
-
-        public static List<Usuarios> RetornarUsuarios()
-        {
-            return listUsuarios;
-        }
-
-        
     }
 }

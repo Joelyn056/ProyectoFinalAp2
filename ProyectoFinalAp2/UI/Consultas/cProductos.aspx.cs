@@ -28,8 +28,8 @@ namespace ProyectoFinalAp2.UI.Consultas
                 ClienteReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteProducto.rdlc");
                 ClienteReportViewer.AsyncRendering = true;
 
-                FInicialTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
-                FFinalTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
+                FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 listProductos = repositorio.GetList(x => true);
             }
