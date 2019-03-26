@@ -1,0 +1,23 @@
+﻿
+.error{
+    color: red;
+}
+
+.user-btn {
+    margin-left: auto !important;
+}
+
+@media (max-width: 992px) {
+    .button {
+        margin-right: auto !important;
+        margin-left: 0 !important;
+
+    }
+
+    .user-btn {
+        margin-left: 0 !important;
+    }
+
+}
+
+
