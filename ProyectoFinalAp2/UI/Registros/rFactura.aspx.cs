@@ -20,7 +20,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private FacturaRepositorio FacturaRepositorio = new FacturaRepositorio();
         private List<FacturaDetalles> detalles = new List<FacturaDetalles>();
 
-        string condicion = "[Seleccione]";
+        string condicion = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,8 +29,8 @@ namespace ProyectoFinalAp2.UI.Registros
                 FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
 
                 ViewState["Detalle"] = new FacturaDetalles();
-                LlenarDropDownListProductos();
-                LlenarDropDownListClientes();
+               // LlenarDropDownListProductos();
+                //LlenarDropDownListClientes();
             }
 
         }
@@ -91,7 +91,7 @@ namespace ProyectoFinalAp2.UI.Registros
 
         private void LlenarCampo(Facturas facturas)
         {
-            ClienteDropDownList.DataSource = repositorioProducto.GetList(x => x.Inventario > 0);
+            ClienteDropDownList.DataSource = repositorioProducto.GetList(x =>true);
             ProductoDropDownList.DataValueField = "ProductoId";
             ProductoDropDownList.DataTextField = "Descripcion";
             ProductoDropDownList.AppendDataBoundItems = true;
@@ -102,7 +102,7 @@ namespace ProyectoFinalAp2.UI.Registros
 
         private void LlenarDropDownListProductos()
         {
-            ProductoDropDownList.DataSource = repositorioProducto.GetList(x => x.Inventario > 0);
+            ProductoDropDownList.DataSource = repositorioProducto.GetList(x => true);
             ProductoDropDownList.DataValueField = "ProductoId";
             ProductoDropDownList.DataTextField = "Descripcion";
             ProductoDropDownList.AppendDataBoundItems = true;
@@ -190,12 +190,12 @@ namespace ProyectoFinalAp2.UI.Registros
                 MontoTextBox.Text = "";
         }
 
-        protected void FacturaGridView_PageIndexChanging(object sender, EventArgs e)
-        {
-            FacturaGridView.DataSource = ViewState["Factura"];
-            FacturaGridView.PageIndex = e.NewPageIndex;
-            FacturaGridView.DataBind();
-        }
+        //protected void FacturaGridView_PageIndexChanging(object sender, EventArgs e)
+        //{
+        //    FacturaGridView.DataSource = ViewState["Factura"];
+        //    FacturaGridView.PageIndex = e.NewPageIndex;
+        //    FacturaGridView.DataBind();
+        //}
 
         protected void AddLinkButton_Click(object sender, EventArgs e)
         {

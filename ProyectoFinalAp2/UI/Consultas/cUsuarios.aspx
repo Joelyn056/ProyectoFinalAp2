@@ -68,7 +68,7 @@
                         <Columns>
                             <asp:BoundField DataField="UsuarioId" HeaderText="UsuarioId" />
                             <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />
-                            <asp:BoundField DataField="Contraseña" HeaderText="Contraseña" />
+                            <asp:BoundField DataField="Contrasena" HeaderText="Contraseña" />
                         </Columns>    
                     </asp:GridView>
                 </div>

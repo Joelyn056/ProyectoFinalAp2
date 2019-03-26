@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Entidades
 {
+    [Serializable]
    public class Clientes
     {
         [Key]

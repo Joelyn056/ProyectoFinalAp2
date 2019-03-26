@@ -19,11 +19,7 @@ namespace BLL
             try
             {
                 if(contexto.Facturas.Add(facturas) != null)
-                {
-                    foreach( var item in facturas.Detalle)
-                    {
-                        contexto.Productos.Find(item.ProductoId).Inventario -= item.Cantidad;
-                    }
+                {                 
 
                      contexto.SaveChanges();
                      paso = true;
@@ -57,7 +53,6 @@ namespace BLL
                     if(facturas.Detalle.ToList().Exists(f => f.Id == item.Id))
                     {
                          contexto.Entry(item).State = estado;
-                         contexto.Productos.Find(item.ProductoId).Inventario -= item.Cantidad;
                     }
                     else
                     {
@@ -90,12 +85,7 @@ namespace BLL
             try
             {
                 Facturas facturas = contexto.Facturas.Find(id);
-
-                foreach(var item in facturas.Detalle)
-                {
-                    contexto.Productos.Find(item.ProductoId).Inventario += item.Cantidad;
-
-                }
+                              
 
                 contexto.FacturaDetalles.RemoveRange(contexto.FacturaDetalles.Where(d => d.FacturaId == id));
                 contexto.Facturas.Remove(facturas);

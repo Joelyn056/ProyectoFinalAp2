@@ -23,9 +23,9 @@ namespace ProyectoFinalAp2.UI.Consultas
         {
             if (!IsPostBack)
             {
-                UsuariosReportViewer.ProcessingMode = ProcessingMode.Local;
-                UsuariosReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteUsuarios.rdlc");
-                UsuariosReportViewer.AsyncRendering = true;
+                //UsuariosReportViewer.ProcessingMode = ProcessingMode.Local;
+                //UsuariosReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteUsuarios.rdlc");
+                //UsuariosReportViewer.AsyncRendering = true;
 
                 FInicialTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
                 FFinalTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
@@ -86,15 +86,6 @@ namespace ProyectoFinalAp2.UI.Consultas
             return listUsuarios;
         }
 
-        UsuarioReportViewer.LocalReport.DataSources.Clear();
-
-            UsuarioReportViewer.LocalReport.DataSources.Add(
-                new ReportDataSource(
-                    "Cliente",
-                    UsuariosBLL.GetList<Usuarios>(filtro)));
-            UsuarioReportViewer.LocalReport.Refresh();
-
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
-                            "$(function() { openReport(); });", true);
+        
     }
 }

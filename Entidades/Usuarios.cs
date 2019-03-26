@@ -19,7 +19,7 @@ namespace Entidades
         public string Usuario { get; set; }
         public string NombreUsuario { get; set; }
         public string TipoUsuario { get; set; }
-        public string Contraseña { get; set; }
+        public string Contrasena { get; set; }
 
         public Usuarios()
         {
@@ -28,14 +28,14 @@ namespace Entidades
             Usuario = string.Empty;
             NombreUsuario = string.Empty;
             TipoUsuario = string.Empty;
-            Contraseña = string.Empty;
+            Contrasena = string.Empty;
         }
 
-        public Usuarios(int usuarioId, string usuario, string nombreUsuario, string tipoUsuario, string contraseña)
+        public Usuarios(int usuarioId, string usuario, string nombreUsuario, string tipoUsuario, string contrasena)
         {
             UsuarioId = usuarioId;
             TipoUsuario = tipoUsuario;
-            Contraseña = contraseña;
+            Contrasena = contrasena;
         }
     }
 }

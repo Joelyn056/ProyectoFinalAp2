@@ -27,8 +27,8 @@ namespace ProyectoFinalAp2.UI.Consultas
                 ClienteReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteCliente.rdlc");
                 ClienteReportViewer.AsyncRendering = true;
 
-                FInicialTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
-                FFinalTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
+                FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 listClientes = repositorio.GetList(x => true);
             }
@@ -103,11 +103,11 @@ namespace ProyectoFinalAp2.UI.Consultas
         {            
             ClienteReportViewer.LocalReport.DataSources.Clear();
 
-            ClienteReportViewer.LocalReport.DataSources.Add(
-                new ReportDataSource(
-                    "Cliente",
-                    ClientesBLL.GetList<Clientes>(filtro)));
-            ClienteReportViewer.LocalReport.Refresh();
+            //ClienteReportViewer.LocalReport.DataSources.Add(
+            //    new ReportDataSource(
+            //        "Cliente",
+            //        ClientesBLL.GetList<Clientes>(filtro)));
+            //ClienteReportViewer.LocalReport.Refresh();
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
                             "$(function() { openReport(); });", true);

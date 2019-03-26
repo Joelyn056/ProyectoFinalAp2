@@ -9,19 +9,19 @@ Fecha date,
 Usuario varchar(20),
 NombreUsuario varchar(20),
 TipoUsuario varchar(15),
-Contraseña varchar(10)
+Contrasena varchar(10)
 );
 go
 
-insert into Usuarios(Fecha, Usuario,NombreUsuario, TipoUsuario, Contraseña) values ('2019/3/26','Joe','Joelyn De La Rosa','Administrador','123');
-insert into Usuarios(Fecha, Usuario,NombreUsuario, TipoUsuario, Contraseña) values ('2019/3/26','Polo','Joelyn Payano','Empleado','1234');
+insert into Usuarios(Fecha, Usuario,NombreUsuario, TipoUsuario, Contrasena) values ('2019/3/26','Joe','Joelyn De La Rosa','Administrador','123');
+insert into Usuarios(Fecha, Usuario,NombreUsuario, TipoUsuario, Contrasena) values ('2019/3/26','Polo','Joelyn Payano','Empleado','1234');
 go
 
 create table Clientes(
 ClienteId int identity primary key,
 Fecha date,
 Nombres varchar(30),
-Edad varchar(100),
+Edad int,
 Sexo varchar(10),
 Ciudad varchar(50),
 Direccion varchar(50),
@@ -38,10 +38,9 @@ FechaRegistro date,
 Descripcion varchar(30),
 Ganancias decimal(16,2),
 Costo decimal(16,2),
-Precio decimal(16,2),
-Inventario int
+Precio decimal(16,2)
 );
-
+insert into Productos(FechaRegistro, Descripcion,Ganancias, Costo, Precio) values ('2019/3/26','Polo',10,20,30);
 go
 
 create table Facturas(

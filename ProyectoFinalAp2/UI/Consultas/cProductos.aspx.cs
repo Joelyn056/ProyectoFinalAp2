@@ -94,13 +94,13 @@ namespace ProyectoFinalAp2.UI.Consultas
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
         {
-            ProductoReportViewer.LocalReport.DataSources.Clear();
+            //ProductoReportViewer.LocalReport.DataSources.Clear();
 
-            ProductoReportViewer.LocalReport.DataSources.Add(
-                new ReportDataSource(
-                    "Cliente",
-                    ProductosBLL.GetList<Productos>(filtro)));
-            ProductoReportViewer.LocalReport.Refresh();
+            //ProductoReportViewer.LocalReport.DataSources.Add(
+            //    new ReportDataSource(
+            //        "Cliente",
+            //        ProductosBLL.GetList<Productos>(filtro)));
+            //ProductoReportViewer.LocalReport.Refresh();
 
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
                             "$(function() { openReport(); });", true);

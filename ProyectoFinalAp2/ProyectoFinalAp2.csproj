@@ -127,6 +127,17 @@
     <Content Include="Resources\Fondo.jpg" />
     <Content Include="Resources\logo.ico" />
     <Content Include="Resources\logo.png" />
+    <Content Include="ProyectoFinalAp2DataSet.xsc">
+      <DependentUpon>ProyectoFinalAp2DataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="ProyectoFinalAp2DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProyectoFinalAp2DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="ProyectoFinalAp2DataSet.xss">
+      <DependentUpon>ProyectoFinalAp2DataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.6.3-vsdoc.js" />
     <Content Include="Resources\Tienda.ico" />
     <Content Include="Scripts\jquery-1.6.3.js" />
@@ -150,13 +161,15 @@
     <Content Include="UI\Consultas\cFactura.aspx" />
     <Content Include="UI\Consultas\cProductos.aspx" />
     <Content Include="UI\Consultas\cUsuarios.aspx" />
-    <Content Include="UI\Login\Login.aspx" />
+    <Content Include="Login.aspx" />
     <Content Include="UI\Registrarse\rUsuarios.aspx" />
     <Content Include="UI\Registros\rClientes.aspx" />
     <Content Include="UI\Registros\rFactura.aspx" />
     <Content Include="UI\Registros\rProductos.aspx" />
     <Content Include="UI\Registros\rUsuarios.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\BasePage.cs">
@@ -173,6 +186,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProyectoFinalAp2DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectoFinalAp2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ReporteCliente.aspx.cs">
       <DependentUpon>ReporteCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,11 +234,11 @@
     <Compile Include="UI\Consultas\cUsuarios.aspx.designer.cs">
       <DependentUpon>cUsuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Login\Login.aspx.cs">
+    <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\Login\Login.aspx.designer.cs">
+    <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Registrarse\rUsuarios.aspx.cs">
@@ -294,6 +312,12 @@
       <Project>{9cae1f65-1f65-43fb-bf19-f1e494895047}</Project>
       <Name>Entidades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reportes\ReportClientes.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\Login\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

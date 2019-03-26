@@ -33,7 +33,7 @@ namespace ProyectoFinalAp2.UI.Registrarse
 
             ToInt(UsuarioTextBox.Text);
             usuarios.Usuario = UsuarioTextBox.Text;
-            usuarios.Contraseña = ContraseñaTextBox.Text;
+            usuarios.Contrasena = ContraseñaTextBox.Text;
 
             return usuarios;
 
@@ -82,7 +82,7 @@ namespace ProyectoFinalAp2.UI.Registrarse
 
                 if(IsValid)
                 {
-                    if (rep.Guardar(LlenaClase))
+                    if (rep.Guardar(LlenaClase()))
                     {
                         Limpiar();
                         ShowMessage("success", "El usuario a sigo guardado");

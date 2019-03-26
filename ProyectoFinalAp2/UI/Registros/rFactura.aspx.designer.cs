@@ -67,13 +67,13 @@ namespace ProyectoFinalAp2.UI.Registros {
         protected global::System.Web.UI.WebControls.DropDownList ClienteDropDownList;
         
         /// <summary>
-        /// CVClientes control.
+        /// RequiredFieldValidator2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CVClientes;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
         
         /// <summary>
         /// ProductoDropDownList control.
@@ -85,13 +85,13 @@ namespace ProyectoFinalAp2.UI.Registros {
         protected global::System.Web.UI.WebControls.DropDownList ProductoDropDownList;
         
         /// <summary>
-        /// CVProducto control.
+        /// RequiredFieldValidator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CVProducto;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
         /// PrecioTextBox control.
@@ -121,15 +121,6 @@ namespace ProyectoFinalAp2.UI.Registros {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// CVCantidad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CVCantidad;
-        
-        /// <summary>
         /// ImporteTextBox control.
         /// </summary>
         /// <remarks>
@@ -137,15 +128,6 @@ namespace ProyectoFinalAp2.UI.Registros {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ImporteTextBox;
-        
-        /// <summary>
-        /// CVImporte control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator CVImporte;
         
         /// <summary>
         /// AddLinkButton control.

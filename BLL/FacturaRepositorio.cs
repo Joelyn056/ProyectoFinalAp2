@@ -109,11 +109,6 @@ namespace BLL
                 if (contexto.Facturas.Add(entity) != null)
                 {
 
-                    foreach (var item in entity.Detalle)
-                    {
-                        contexto.Productos.Find(item.ProductoId).Inventario -= item.Cantidad;
-                    }
-
                     contexto.SaveChanges();
                     paso = true;
                 }
@@ -146,7 +141,6 @@ namespace BLL
                     if (!factura.Detalle.ToList().Exists(f => f.Id == item.Id))
                     {
                         item.Producto = null;
-                        contexto.Productos.Find(item.ProductoId).Inventario += item.Cantidad;
 
                     }
                 }

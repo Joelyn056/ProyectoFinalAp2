@@ -74,7 +74,7 @@ namespace ProyectoFinalAp2.UI.Registros
             usuarios.UsuarioId = ToInt(UsuarioIdTextBox.Text);
             DateTime.Parse(FechaTextBox.Text);
             usuarios.NombreUsuario = NombreTextBox.Text;
-            usuarios.Contraseña = ContraseñaTextBox.Text;
+            usuarios.Contrasena = ContraseñaTextBox.Text;
             usuarios.TipoUsuario = TipoUsuarioDropDownList.Text;
 
             return usuarios;
@@ -86,7 +86,7 @@ namespace ProyectoFinalAp2.UI.Registros
             FechaTextBox.Text = usuarios.Fecha.ToString();
             NombreTextBox.Text = usuarios.NombreUsuario;
             TipoUsuarioDropDownList.Text = usuarios.TipoUsuario;
-            ContraseñaTextBox.Text = usuarios.Contraseña;
+            ContraseñaTextBox.Text = usuarios.Contrasena;
         }
 
         private void Limpiar()

@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="ProyectoFinalAp2.UI.Login.Login" %>
 
-<!DOCTYPE html>
-
+<!DOCTYPE html
 <link href="../../Content/Login%20Style/style.css" rel="stylesheet" />
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -24,8 +23,10 @@
     
     <form>
       <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
+        <asp:textbox id="usuarioTextBox" runat="server"></asp:textbox>
+        <asp:textbox id="passTextBox" runat="server"></asp:textbox>
       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+      <input type="submit" class="fadeIn fourth" onclick="" value="Log In">
         <div id="formFooter">
             <a class="underlineHover"  runat="server" href="~/UI/Registrarse/rUsuarios.aspx">Create Acount</a>
         </div>                  
