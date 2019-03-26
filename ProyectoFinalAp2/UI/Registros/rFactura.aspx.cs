@@ -82,7 +82,7 @@ namespace ProyectoFinalAp2.UI.Registros
             CantidadTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
             ImporteTextBox.Text = string.Empty;
-            MontoTextBox.Text = string.Empty;
+            MontoTextBox.Text = string.Empty;           
             FacturaGridView.DataSource = null;
             ViewState["Detalle"] = null;
 
@@ -190,7 +190,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 MontoTextBox.Text = "";
         }
 
-        protected void FacturaGridView_SelectedIndexChanged(object sender, EventArgs e)
+        protected void FacturaGridView_PageIndexChanging(object sender, EventArgs e)
         {
             FacturaGridView.DataSource = ViewState["Factura"];
             FacturaGridView.PageIndex = e.NewPageIndex;
@@ -227,5 +227,13 @@ namespace ProyectoFinalAp2.UI.Registros
             FacturaGridView.DataSource = ViewState["Detalle"];
             FacturaGridView.DataBind();
         }
+
+        protected void FacturaGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            FacturaGridView.DataSource = ViewState["Factura"];
+            FacturaGridView.PageIndex = e.NewPageIndex;
+            FacturaGridView.DataBind();
+        }
+
     }
 }

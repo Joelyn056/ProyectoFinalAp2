@@ -32,7 +32,7 @@ namespace ProyectoFinalAp2.UI.Registros
             Productos producto = new Productos();
 
             producto.ProductoId = ToInt(ProductoIdTextBox.Text);
-            DateTime.Parse(FechaTextBox.Text);
+            producto.FechaRegistro = ToDateTime(FechaTextBox.Text);
             producto.Descripcion = DescripcionTextBox.Text;
             producto.Costo = ToDecimal(CostoTextBox.Text);
             producto.Precio = ToDecimal(PrecioTextBox.Text);

@@ -47,12 +47,12 @@
                     <asp:DropDownList ID="FiltroDropDownList" CssClass="form-control" runat="server">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem>ProductoId</asp:ListItem>
-                        <asp:ListItem>Fecha Ingreso</asp:ListItem>
+                        <asp:ListItem>Fecha</asp:ListItem>
                         <asp:ListItem>Descripcion</asp:ListItem>
                         <asp:ListItem>Costo</asp:ListItem>
                         <asp:ListItem>Precio</asp:ListItem>
                         <asp:ListItem>Ganancias</asp:ListItem>
-                        <asp:ListItem>Inventario</asp:ListItem>
+                        <%--<asp:ListItem>Inventario</asp:ListItem>--%>
                     </asp:DropDownList>
                 </div>  
                 <div class="col-lg-1"></div>
@@ -61,7 +61,7 @@
                     <asp:TextBox ID="BuscarTextBox" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-lg-1 p-0">
-                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server">
+                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server" OnClick="BuscarLinkButton_Click">
                         <span class="fas fa-search"></span>
                         Buscar
                     </asp:LinkButton>
@@ -75,7 +75,7 @@
                    <%-- <asp:GridView ID="ClientesGridView" runat="server" AllowPaging="true" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="ClientesGridView_PageIndexChanging">--%>
                         <Columns>
                             <asp:BoundField DataField="ProductoId" HeaderText="ProductoId" />
-                            <asp:BoundField DataField="Fecha Ingreso" HeaderText="Fecha" />
+                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />                          
                             <asp:BoundField DataField="Costo" HeaderText="Costo" />
                             <asp:BoundField DataField="Precio" HeaderText="Precio" />
@@ -89,7 +89,7 @@
             <!--Imprmir-->
             <div class="row justify-content-end">
                 <div class="col-lg-2">
-                    <asp:LinkButton ID="ImprimirLinkButton" CssClass=" btn btn-warning" runat="server">
+                    <asp:LinkButton ID="ImprimirLinkButton" CssClass=" btn btn-warning" runat="server" OnClick="ImprimirLinkButton_Click">
                         <span class="fas fa-print"></span>
                         Imprimir
                     </asp:LinkButton>

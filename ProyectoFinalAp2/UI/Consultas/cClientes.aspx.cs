@@ -15,7 +15,7 @@ namespace ProyectoFinalAp2.UI.Consultas
 {
     public partial class cClientes : BasePage
     {
-        Expression<Func<Clientes, bool>> filtro = x => true;
+        Expression<Func<Clientes, bool>> filtro /*= x => true*/;
         Repositorio<Clientes> repositorio = new Repositorio<Clientes>();
         public static List<Clientes> listClientes { get; set; }
 

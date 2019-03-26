@@ -75,7 +75,7 @@
             <!--Ganancia-->
 
             <div class="form-group row justify-content-center">
-                <asp:Label ID="Label7" CssClass="col-lg-2 col-form-label" TextMode="Number" runat="server">Ganancia:</asp:Label>
+                <asp:Label ID="Label7" CssClass="col-lg-2 col-form-label" TextMode="Number" runat="server">Ganancias:</asp:Label>
                 <div class="col-lg-2">
                     <asp:TextBox ID="GananciaTextBox" CssClass="form-control" ReadOnly="true" runat="server" OnTextChanged="GananciaTextBox_TextChanged"></asp:TextBox>
                 </div>

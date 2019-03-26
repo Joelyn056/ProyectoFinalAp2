@@ -55,6 +55,14 @@ namespace ProyectoFinalAp2.App_Code
             return (string.IsNullOrWhiteSpace(text)) ? 0 : decimal.Parse(text);
         }
 
+        public static DateTime ToDateTime(string valor)
+        {
+            DateTime retorno = DateTime.Now;
+            DateTime.TryParse(valor, out retorno);
+
+            return retorno;
+        }
+
         protected void ShowMessage(string type, string message)
         {
             ScriptManager.RegisterStartupScript(

@@ -172,7 +172,8 @@
                             <!--Grid-->
                             <div class="row justify-content-center">
                                 <div class="col-lg-11">
-                                    <asp:GridView ID="FacturaGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="FacturaGridView_SelectedIndexChanged">
+                                     <asp:GridView ID="FacturaGridView" OnPageIndexChanging="FacturaGridView_PageIndexChanging" runat="server" AllowPaging="true" CellPadding="4" PageSize="7" ForeColor="#333333" GridLines="None" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False">
+                                  <%--  <asp:GridView ID="FacturaGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="FacturaGridView_SelectedIndexChanged">--%>
                                         <%--<asp:GridView ID="FacturaGridView" runat="server" AllowPaging="True" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="ClientesGridView_PageIndexChanging" OnRowCancelingEdit="FacturaGridView_RowCancelingEdit" OnRowEditing="FacturaGridView_RowEditing" OnRowUpdating="FacturaGridView_RowUpdating">--%>
                                         <Columns>
                                             <asp:CommandField ControlStyle-CssClass="btn btn-secondary" ButtonType="Button" ShowEditButton="True" />

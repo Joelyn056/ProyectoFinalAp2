@@ -63,7 +63,7 @@
             <!--Grid-->
             <div class="row justify-content-center mt-3">
                 <div class="col-lg-11"> 
-                    <asp:GridView ID="ClientesGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                    <asp:GridView ID="UsuarioGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                    <%-- <asp:GridView ID="UsuarioGridView" runat="server" AllowPaging="true" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="UsuarioGridView_PageIndexChanging">--%>
                         <Columns>
                             <asp:BoundField DataField="UsuarioId" HeaderText="UsuarioId" />
@@ -77,7 +77,7 @@
             <!--Imprmir-->
             <div class="row justify-content-end">
                 <div class="col-lg-2">
-                    <asp:LinkButton ID="ImprimirLinkButton" CssClass="btn btn-warning" runat="server">
+                    <asp:LinkButton ID="ImprimirLinkButton" CssClass="btn btn-warning" runat="server" OnClick="ImprimirLinkButton_Click">
                         <span class="fas fa-print"></span>
                         Imprimir
                     </asp:LinkButton>
