@@ -16,6 +16,7 @@ namespace ProyectoFinalAp2.UI.Consultas
     public partial class cClientes : BasePage
     {
         Expression<Func<Clientes, bool>> filtro /*= x => true*/;
+        public static List<Clientes> lista = new List<Clientes>();
         Repositorio<Clientes> repositorio = new Repositorio<Clientes>();
         public static List<Clientes> listClientes { get; set; }
 
@@ -23,15 +24,19 @@ namespace ProyectoFinalAp2.UI.Consultas
         {
             if (!IsPostBack)
             {
-                ClienteReportViewer.ProcessingMode = ProcessingMode.Local;
-                ClienteReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteCliente.rdlc");
-                ClienteReportViewer.AsyncRendering = true;
+                ClientesReporteViewer.ProcessingMode = ProcessingMode.Local;
+                ClientesReporteViewer.Reset();
+                ClientesReporteViewer.LocalReport.ReportPath = Server.MapPath(@"../Reportes/ReporteClientes.rdlc");
+                ClientesReporteViewer.LocalReport.DataSources.Clear();
+                ClientesReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ClientesDataSet", cClientes.lista));
+                ClientesReporteViewer.LocalReport.Refresh();
 
-                FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+            }
+            FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 listClientes = repositorio.GetList(x => true);
-            }
+            
 
         }
 
@@ -64,8 +69,8 @@ namespace ProyectoFinalAp2.UI.Consultas
                     break;
 
                 case 3://Edad
-                    id = ToInt(BuscarTextBox.Text);
-                    filtro = (p => p.Edad >= id);
+                    //id = ToInt(BuscarTextBox.Text);
+                    filtro = (p => p.Edad.Equals(BuscarTextBox.Text));
                     break;
 
                 case 4: // sexo
@@ -100,8 +105,10 @@ namespace ProyectoFinalAp2.UI.Consultas
         }
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
-        {            
-            ClienteReportViewer.LocalReport.DataSources.Clear();
+        {
+            Response.Redirect("/Reportes/ClientesReporteViewer.aspx");
+
+            //ClienteReportViewer.LocalReport.DataSources.Clear();
 
             //ClienteReportViewer.LocalReport.DataSources.Add(
             //    new ReportDataSource(
@@ -109,8 +116,8 @@ namespace ProyectoFinalAp2.UI.Consultas
             //        ClientesBLL.GetList<Clientes>(filtro)));
             //ClienteReportViewer.LocalReport.Refresh();
 
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
-                            "$(function() { openReport(); });", true);
+            //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
+            //                "$(function() { openReport(); });", true);
         }
     }
 }

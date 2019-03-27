@@ -63,7 +63,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Scripts\SQLQuery1.sql" />
+    <Content Include="Scripts\SQLQuery10.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

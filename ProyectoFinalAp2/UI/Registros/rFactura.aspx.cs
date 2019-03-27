@@ -24,13 +24,23 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
-                FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
+                EnableViewState = true;
+                FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
+                ViewState.Add("Detalle", detalles);
+                ViewState.Add("Factura", facturas);
 
-                ViewState["Detalle"] = new FacturaDetalles();
                 LlenarDropDownListProductos();
                 LlenarDropDownListClientes();
+            }
+            else
+            {
+                //borra tu base de datos y deja que te la cree solo, asi va ver menos conflicto
+                //prueba pero tengo que descomentar esto
+                
+                detalles = (List<FacturaDetalles>)ViewState["Detalle"];
+                //facturas = (Facturas)ViewState["Factura"];
             }
 
         }
@@ -64,11 +74,12 @@ namespace ProyectoFinalAp2.UI.Registros
 
         private Facturas LlenaClase()
         {
+            
             facturas.FacturaId = ToInt(FacturaIdTextBox.Text);
-            DateTime.Parse(FechaTextBox.Text);
+            facturas.Fecha = DateTime.Parse(FechaTextBox.Text);
             facturas.ClienteId = ToInt(ClienteDropDownList.SelectedValue);
             facturas.Total = ToDecimal(MontoTextBox.Text);
-            facturas.Detalle = (List<FacturaDetalles>)ViewState["Detalle"];
+            facturas.Detalle = detalles;
 
             return facturas;
         }
@@ -84,7 +95,7 @@ namespace ProyectoFinalAp2.UI.Registros
             ImporteTextBox.Text = string.Empty;
             MontoTextBox.Text = string.Empty;
             FacturaGridView.DataSource = null;
-            ViewState["Detalle"] = null;
+            //ViewState["Detalle"] = null;
 
 
         }
@@ -123,7 +134,8 @@ namespace ProyectoFinalAp2.UI.Registros
         private string SubTotal()
         {
             decimal monto = 0;
-            foreach (var item in (List<FacturaDetalles>)ViewState["Detalle"])
+            foreach (var item in facturas.Detalle)
+                //(List<FacturaDetalles>)ViewState["Detalle"])
             {
 
                 monto += FacturasBLL.CalcularSubTotal(item.Importe);
@@ -134,18 +146,95 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
         {
-            if (!isRefresh)
+            if (!IsValid)
             {
-                facturas = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
+               Facturas factura = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
 
-                if (facturas != null)
-                {
+              
+
+                if(FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text)) != null)
+                    
+                { 
                     CallModal("Se encontro la factura");
-                    LlenarCampo(facturas);
+                    LlenarCampo(factura);
                 }
                 else
                 {
                     CallModal("No hay resultado");
+                }
+            }
+        }
+
+        //Mi loco pues
+
+        protected void NuevoButton_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+        protected void GuardarButton2_Click(object sender, EventArgs e)
+        {
+            //Repositorio<Facturas> repositorio = new Repositorio<Facturas>();
+            FacturaRepositorio repositorio = new FacturaRepositorio();
+            Facturas factura = repositorio.Buscar(ToInt(FacturaIdTextBox.Text));
+
+            if (IsValid)
+            {
+                factura = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
+
+                if (factura == null)
+                {
+                    if(repositorio.Guardar(LlenaClase()))
+                    {
+
+                     CallModal("Factura Guardada");
+                     Limpiar();
+                    }                  
+
+                }
+                else
+                {
+                    CallModal("No Guardado");
+                    Limpiar();
+                }
+            }
+            else
+            {
+                if(FacturaRepositorio.Modificar(LlenaClase()))
+                {
+                    CallModal("Factura Modificada");
+                    Limpiar();
+                }
+                else
+                {
+                    CallModal("No se modifico");
+                    Limpiar();
+                }
+            }
+        }
+
+        protected void EliminarButton3_Click(object sender, EventArgs e)
+        {
+            GridViewRow grid = FacturaGridView.SelectedRow;
+            List<FacturaDetalles> lista = (List<FacturaDetalles>)ViewState["Detalle"];
+            Repositorio<Facturas> repositorio = new Repositorio<Facturas>();
+           Facturas factura = repositorio.Buscar(ToInt(FacturaIdTextBox.Text));
+
+            if (IsValid)
+            {
+                if(factura != null)
+                {
+                    FacturaRepositorio.Eliminar(factura.FacturaId);
+                    //ViewState["Detalle"] = lista;
+                    FacturaGridView.DataSource = ViewState["Detalle"];
+                    FacturaGridView.DataBind();
+                    CallModal("Factura Eliminada");
+                    Limpiar();
+                }
+                else
+                {
+                    CallModal("No se Elimino la factura");
+                    Limpiar();
                 }
             }
         }
@@ -197,68 +286,33 @@ namespace ProyectoFinalAp2.UI.Registros
         //    FacturaGridView.DataBind();
         //}
 
+        //private int Entero(string valor)
+        //{
+        //    int retorno = 0;
+        //    int.TryParse(valor, out retorno);
+
+        //    return retorno;
+        //}
+
         protected void AddLinkButton_Click(object sender, EventArgs e)
         {
             if (IsValid)
-            {/*
-                if (FacturaGridView.Rows.Count != 0)
-                {
-                    facturas.Detalle = (List<FacturaDetalles>)ViewState["Detalle"];
-                }
-
-                if (facturas != null)
-                {
-                    if (facturas.Detalle.Exists(x => x.ProductoId.Equals(ToInt(ProductoDropDownList.SelectedValue))))
-                    {
-                        var producto = facturas.Detalle.Where(x => x.ProductoId.Equals(ToInt(ProductoDropDownList.SelectedValue)));
-
-                    }
-
-                    if (((FacturaDetalles)ViewState["Detalle"]).Id != 0)
-                    {
-                        facturas.Detalle.Add(new FacturaDetalles(((FacturaDetalles)ViewState["Detalle"]).Id, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue),
-                            ProductoDropDownList.Text, ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
-                    }
-                    else
-                    {
-                        facturas.Detalle.Add(new FacturaDetalles(0, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(),
-                           ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
-                        ViewState["Detalle"] = new FacturaDetalles();
-                    }
-
-                }
-                else
-                {
-                    facturas.Detalle.Add(new FacturaDetalles(0, 0, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(),
-                        ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text)));
-                    ViewState["Detalle"] = facturas.Detalle;
-                }*/
-             //SubTotal();
-
-
-                var Ant = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
-                               
-                if(Ant == null)
-                {
-                    facturas = (Facturas)ViewState["Factura"];
-
-                    facturas.AgregarDetalle(0, facturas.FacturaId, ToInt(ProductoDropDownList.SelectedValue), ProductoDropDownList.SelectedItem.ToString(), ToInt(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text), ToDecimal(ImporteTextBox.Text));
-                }
-                else
-                {
-                    Ant = (Facturas)ViewState["Modificar"];
-                    Ant.Detalle.Add(new FacturaDetalles() {
-                        Id = 0,
-                        FacturaId = ToInt(FacturaIdTextBox.Text),
-                        ProductoId = ToInt(ProductoDropDownList.SelectedValue),
-                        Descripcion = ProductoDropDownList.SelectedItem.ToString(),
-                        Precio = ToDecimal(PrecioTextBox.Text),
-                        Cantidad = ToInt(CantidadTextBox.Text),
-                        Importe = ToDecimal(ImporteTextBox.Text)
-                    });
-                }
-                ViewState["Detalle"] = facturas;
-                FacturaGridView.DataSource = ViewState["Detalle"];
+            {
+                // como tu llamas el reporte con modal en la consulta porque segun veo tu consultas son sin esta parte digo los portes
+                // y cuando llamo al modal no hace nadita 
+                detalles.Add(new FacturaDetalles(
+                    0,
+                    ToInt(FacturaIdTextBox.Text),
+                    ToInt(ProductoDropDownList.SelectedValue),
+                    ProductoDropDownList.SelectedItem.ToString(),
+                    ToInt(CantidadTextBox.Text),
+                    ToDecimal(PrecioTextBox.Text),
+                    ToDecimal(ImporteTextBox.Text)
+                    ));
+                           
+                ViewState["Detalle"] = detalles;
+                //this.BindGrid();
+                FacturaGridView.DataSource = detalles;
                 FacturaGridView.DataBind();
             }
         }
@@ -273,6 +327,39 @@ namespace ProyectoFinalAp2.UI.Registros
         protected void ProductoDropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
             FiltrarPrecio();
+        }
+
+        protected void CantidadTextBox_TextChanged(object sender, EventArgs e)
+        {
+            ImporteTextBox.Text = FacturasBLL.CalcularImporte(ToDecimal(CantidadTextBox.Text), ToDecimal(PrecioTextBox.Text)).ToString();
+        }
+
+        protected void MontoTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void BuscarLinkButton_Click1(object sender, EventArgs e)
+        {
+            if (!isRefresh)
+            {
+                Repositorio<Facturas> rep = new Repositorio<Facturas>();
+                Facturas f = rep.Buscar(ToInt(FacturaIdTextBox.Text));
+
+                if (f != null)
+                {
+                    LlenarCampo(f);
+                }
+                else
+                {
+                    CallModal("Esta factura no existe");
+                    Limpiar();
+                }
+                // lo hago asi como ese pasandole cada cosa
+                //aunque le estoy pasanto el llena campo deberia tirar todo lo del llena campo
+                //tu no haz revisado tu base de datos para ver que id tiene
+                // no, porque como no habia funcionado no podia guardar, pero dejmae hacer un select
+            }
         }
     }
 }

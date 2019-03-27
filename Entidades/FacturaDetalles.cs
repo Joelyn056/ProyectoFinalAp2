@@ -13,7 +13,7 @@ namespace Entidades
     {
         [Key]
         public int Id { get; set; }
-        public int FacturaId { get; set; }
+        public int FacturaId { get; set; }       
         public int ProductoId { get; set; }
         public string Descripcion { get; set; }
         public int Cantidad { get; set; }

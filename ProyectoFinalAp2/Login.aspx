@@ -9,19 +9,18 @@
     <meta charset="utf-8" />
 
     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-
-
+    
+    <link rel="icon" type="image/png" href="/Content/Login/images/icons/favicon.ico"/>
     <link href="/Content/Login/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-
     <link href="/Content/Login/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <link href="/Content/Login/fonts/iconic/css/material-design-iconic-font.min.css" rel="stylesheet" />
     <link href="/Content/Login/vendor/animate/animate.css" rel="stylesheet" />
     <link href="/Content/Login/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" />
     <link href="/Content/Login/vendor/animsition/css/animsition.min.css" rel="stylesheet" />
     <link href="/Content/Login/vendor/select2/select2.min.css" rel="stylesheet" />
-    <link href="/Content/Login/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" />
-    <link href="/Content/Login/css/main.css" rel="stylesheet" />
+    <link href="/Content/Login/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" />	
     <link href="/Content/Login/css/util.css" rel="stylesheet" />
+    <link href="/Content/Login/css/main.css" rel="stylesheet" />
 
 </head>
 <body>
@@ -30,10 +29,10 @@
 			<div class="wrap-login100 p-t-85 p-b-20">
 				<form runat="server" class="login100-form validate-form">
 					<span class="login100-form-title p-b-70">
-						Welcome
+						Bienvenidos
 					</span>
 					<span class="login100-form-avatar">
-						<img src="/Content/Login/images/avatar-01.jpg" alt="AVATAR">
+					<%--	<img src="/Content/Login/images/Tienda.jpg" alt="AVATAR">--%>
 					</span>
 
 					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">

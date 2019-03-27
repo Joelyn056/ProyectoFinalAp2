@@ -10,7 +10,7 @@
 namespace ProyectoFinalAp2.Reportes {
     
     
-    public partial class ReporteCliente {
+    public partial class ReporteFactura {
         
         /// <summary>
         /// form1 control.
@@ -22,12 +22,12 @@ namespace ProyectoFinalAp2.Reportes {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// ClientesReporteViewer control.
+        /// FactutaReportViewer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ClientesReporteViewer;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer FactutaReportViewer;
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteCliente.aspx.cs" Inherits="ProyectoFinalAp2.Reportes.ReporteCliente" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteUsuarios.aspx.cs" Inherits="ProyectoFinalAp2.Reportes.ReporteUsuarios" %>
 
 <%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
 
@@ -19,7 +19,7 @@
            <%---ScriptManager---%>
             <asp:ScriptManager runat="server"></asp:ScriptManager>
 
-            <rsweb:ReportViewer ID="ClientesReporteViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
+            <rsweb:ReportViewer ID="UsuariosReportViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
                 <ServerReport ReportPath="" ReportServerUrl="" />
             </rsweb:ReportViewer>
         </div>

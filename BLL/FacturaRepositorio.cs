@@ -108,7 +108,6 @@ namespace BLL
             {
                 if (contexto.Facturas.Add(entity) != null)
                 {
-
                     contexto.SaveChanges();
                     paso = true;
                 }

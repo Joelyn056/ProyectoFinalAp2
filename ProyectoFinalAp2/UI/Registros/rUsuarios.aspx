@@ -20,7 +20,7 @@
                         <asp:TextBox TextMode="Number" CssClass="form-control" ID="UsuarioIdTextBox" runat="server"></asp:TextBox>
                     </div>
                     <div class="col-lg-1">
-                        <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary" runat="server" CausesValidation="False">
+                        <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary" runat="server" CausesValidation="False" OnClick="BuscarLinkButton_Click1">
                 <span class="fas fa-search"></span>
                  Buscar
              </asp:LinkButton>
@@ -61,6 +61,8 @@
                     </div>
                 </div>
 
+
+
                   <!--Confirmar Contraseña-->
                 <div class="form-group row justify-content-center">
                     <asp:Label ID="Label5" CssClass="col-lg-2 col-form-label mr-2" runat="server"  Text="Confirmar">Confirmar :</asp:Label>
@@ -68,13 +70,12 @@
                         <asp:TextBox ID="ConfirmarTextBox" CssClass="form-control" TextMode="Password" runat="server"></asp:TextBox>
                     </div>
                     <div class="col-1">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" Text="*" Display="Dynamic"
-                            ControlToValidate="ConfirmarTextBox">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"  Display="Dynamic"
+                           ErrorMessage="*" ControlToValidate="ConfirmarTextBox"></asp:RequiredFieldValidator>
 
                         <asp:CustomValidator ID="CustomValidator" runat="server" ControlToValidate="ConfirmarTextBox" ValidationGroup="Guardar" ForeColor="Red" Display="Dynamic" ErrorMessage="La Contraseña No Coinciden" OnServerValidate="CustomValidator_ServerValidate"></asp:CustomValidator>
                     </div>
                 </div>
-
 
            <!--Tipo Usuario-->
                 <div class="form-group row justify-content-center">
@@ -83,7 +84,8 @@
                         <asp:DropDownList ID="TipoUsuarioDropDownList" CssClass="form-control" runat="server">
                             <asp:ListItem></asp:ListItem>                        
                         </asp:DropDownList>
-                         <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="TipoUsuarioDropDownList" ValidationGroup="Guardar" ForeColor="Red" Display="Dynamic" ErrorMessage="Seleccione  " OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
+                         <asp:CustomValidator ID="CustomValidator1" runat="server" ControlToValidate="TipoUsuarioDropDownList"
+                             ValidationGroup="Guardar" ForeColor="Red" Display="Dynamic" ErrorMessage="Seleccione  " OnServerValidate="CustomValidator1_ServerValidate"></asp:CustomValidator>
                     </div>
                     
                 </div>

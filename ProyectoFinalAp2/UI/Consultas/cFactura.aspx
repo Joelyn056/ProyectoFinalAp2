@@ -59,7 +59,7 @@
                     <asp:TextBox ID="BuscarTextBox" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-lg-1 p-0">
-                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server">
+                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server" OnClick="BuscarLinkButton_Click">
                         <span class="fas fa-search"></span>
                         Buscar
                     </asp:LinkButton>
@@ -69,16 +69,16 @@
             <!--Grid-->
             <div class="row justify-content-center mt-3">
                 <div class="col-lg-11">     
-                      <asp:GridView ID="ProductoGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                      <asp:GridView ID="FacturaGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
                     <%--<asp:GridView ID="FacturaGridView" runat="server" AllowPaging="true" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="FacturaGridView_PageIndexChanging">--%>
                         <Columns>
                             <asp:BoundField DataField="FacturaId" HeaderText="FacturaId" />
                             <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                             <asp:BoundField DataField="ClienteId" HeaderText="ClienteId" />
-                            <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />
-                            <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
+                           <%-- <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" />--%>
+                           <%-- <asp:BoundField DataField="Cantidad" HeaderText="Cantidad" />
                             <asp:BoundField DataField="Precio" HeaderText="Precio" />
-                            <asp:BoundField DataField="Monto" HeaderText="Monto" />
+                            <asp:BoundField DataField="Monto" HeaderText="Monto" />--%>
 
 
                         </Columns>    

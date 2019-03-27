@@ -17,23 +17,23 @@ namespace ProyectoFinalAp2.App_Code
         public bool refreshState;
         public bool isRefresh;
 
-        protected override void LoadViewState(object savedState)
+        /*protected override void LoadViewState(object savedState)
         {
-            object[] AllStates = (object[])savedState;
-            base.LoadViewState(AllStates[0]);
-            refreshState = bool.Parse(AllStates[1].ToString());
-            if (Session["ISREFRESH"] != null && Session["ISREFRESH"] != "")
-                isRefresh = (refreshState == (bool)Session["ISREFRESH"]);
-        }
+            //object[] AllStates = (object[])savedState;
+            //base.LoadViewState(AllStates[0]);
+            //refreshState = bool.Parse(AllStates[1].ToString());
+            //if (Session["ISREFRESH"] != null && Session["ISREFRESH"] != "")
+            //    isRefresh = (refreshState == (bool)Session["ISREFRESH"]);
+        }*/
 
-        protected override object SaveViewState()
+       /* protected override object SaveViewState()
         {
             Session["ISREFRESH"] = refreshState;
             object[] AllStates = new object[3];
             AllStates[0] = base.SaveViewState();
             AllStates[1] = !(refreshState);
             return AllStates;
-        }
+        }*/
 
         protected void CallModal(string mensaje)
         {
@@ -44,7 +44,8 @@ namespace ProyectoFinalAp2.App_Code
             ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Alert",
                             "$(function() { openModal(); });", true);
         }
-
+       
+       
         protected int ToInt(string text)
         {
             return (string.IsNullOrWhiteSpace(text)) ? 0 : int.Parse(text);

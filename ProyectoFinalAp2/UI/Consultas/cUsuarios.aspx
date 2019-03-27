@@ -45,6 +45,7 @@
                         <asp:ListItem>UsuarioId</asp:ListItem>
                         <asp:ListItem>Usuario</asp:ListItem>
                         <asp:ListItem>Contraseña</asp:ListItem>
+                        <asp:ListItem>Tipo Usuario</asp:ListItem>
                     </asp:DropDownList>
                 </div>  
                 <div class="col-lg-1"></div>
@@ -69,6 +70,8 @@
                             <asp:BoundField DataField="UsuarioId" HeaderText="UsuarioId" />
                             <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />
                             <asp:BoundField DataField="Contrasena" HeaderText="Contraseña" />
+                            <asp:BoundField DataField="TipoUsuario" HeaderText="TipoUsuario" />
+
                         </Columns>    
                     </asp:GridView>
                 </div>

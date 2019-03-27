@@ -2,7 +2,7 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script type="text/javascript">
+   <script type="text/javascript">
         function openReport() {
             $("#<%=reportModal.ClientID%>").modal({
                 backdrop: 'static',
@@ -13,6 +13,8 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentCP" runat="server">
+      <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+
     <div class="card">
         <div class="card-header text-white text-center bg-success">
             <h3>Consulta de clientes</h3>
@@ -59,6 +61,11 @@
                 <div class="col-lg-1 p-0">
                     <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server" OnClick="BuscarLinkButton_Click"> <span class="fas fa-search"></span>Buscar </asp:LinkButton>
                 </div>
+                   </div>
+             <div class="col-lg-1 p-0">
+            <button type="button" class="btn btn-outline-info mt-4" data-toggle="modal" data-target=".bd-example-modal-lg">Imprimir</button>
+
+        </div>
             </div>
 
             <!--Grid-->
@@ -89,9 +96,12 @@
                     </asp:LinkButton>
                 </div>
             </div>
+
+
         </div>  
         <!--end card-->
-    </div>
+ 
+
 
     <!--Report Modal-->
     <div class="modal fade" id="reportModal"  role="dialog" runat="server">

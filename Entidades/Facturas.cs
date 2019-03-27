@@ -25,7 +25,7 @@ namespace Entidades
         {
             Detalle = new List<FacturaDetalles>();
         }
-        /// Metodo de la para
+    
         public Facturas(int facturaId, int clienteId, DateTime fecha, decimal subTotal, decimal itbis, decimal total, List<FacturaDetalles> detalle)
         {
             FacturaId = facturaId;

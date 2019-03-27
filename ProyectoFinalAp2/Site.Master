@@ -23,7 +23,7 @@
 
     <link href="~/Tienda.ico" rel="shortcut icon" type="image/x-icon" />
 
-    <script type="text/javascript">
+   <%-- <script type="text/javascript">
         function openModal() {
             $("#myModal").modal({
                 backdrop: 'static',
@@ -31,8 +31,8 @@
             });
             $("#myModal").modal("show");
         }
-    </script>
-
+    </script>--%>
+     
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -94,7 +94,7 @@
                     <div class="modal-content">
                         <!--Body-->
                         <div class="modal-body">
-                            <asp:Label ID="MessageLabel" CssClass="text-center" runat="server" Text="Label" EnableViewState="False"></asp:Label>
+                            <asp:Label ID="MessageLabel" CssClass="text-center" runat="server" Text="Label"></asp:Label>
                         </div>
 
                         <!--Footer-->

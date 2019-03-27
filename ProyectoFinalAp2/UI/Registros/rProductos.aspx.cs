@@ -67,12 +67,9 @@ namespace ProyectoFinalAp2.UI.Registros
                 }
                 else
                 {
-                    CallModal("Este cliente no existe");
+                    CallModal("Este producto no existe");
                     Limpiar();
-                }
-                 
-
-
+                }               
 
             }
 
@@ -119,7 +116,7 @@ namespace ProyectoFinalAp2.UI.Registros
             {
                 if (rep.Eliminar(ToInt(ProductoIdTextBox.Text)))
                 {
-                    CallModal("Se a eliminado el producto");
+                    CallModal("Se eliminado el producto");
                     Limpiar();
 
                 }

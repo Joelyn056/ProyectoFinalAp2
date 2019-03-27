@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="col-lg-1 p-0">
-                    <asp:LinkButton ID="BuscarLinkButton" CausesValidation="false" CssClass="btn btn-primary mt-4" runat="server">
+                    <asp:LinkButton ID="BuscarLinkButton" CausesValidation="false" CssClass="btn btn-primary mt-4" runat="server" OnClick="BuscarLinkButton_Click1">
                                 <span class="fas fa-search"></span>
                                      Buscar
                     </asp:LinkButton>
@@ -78,7 +78,7 @@
                 <%--Cantidad--%>
                 <div class="form-group col-md-1">
                     <asp:Label Text="Cantidad" runat="server" />
-                    <asp:TextBox ID="CantidadTextBox" class="form-control input-sm" AutoPostBack="true" AutoCompleteType="Disabled" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
+                    <asp:TextBox ID="CantidadTextBox" class="form-control input-sm" AutoPostBack="true" AutoCompleteType="Disabled" TextMode="Number" runat="server" placeholder="0" OnTextChanged="CantidadTextBox_TextChanged"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ForeColor="Red" Display="Dynamic" ValidationGroup="Agregar" ControlToValidate="CantidadTextBox" ErrorMessage="No Hay Cantidad"></asp:RequiredFieldValidator>
                 </div>
 
@@ -192,7 +192,7 @@
             <div class="form-group col-md-3">
                 <asp:Label ID="Label4" CssClass="col-lg-1 col-form-label" runat="server" Text="Monto">Monto:</asp:Label>
                 <div class="col-lg-6 ">
-                    <asp:TextBox ID="MontoTextBox" CssClass="form-control input-sm" AutoPostBack="true" ReadOnly="true" TextMode="Number" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="MontoTextBox" CssClass="form-control input-sm" AutoPostBack="true" ReadOnly="true" TextMode="Number" runat="server" OnTextChanged="MontoTextBox_TextChanged"></asp:TextBox>
                 </div>
             </div>
 
@@ -207,17 +207,17 @@
 
                 <div class="row justify-content-center">
                     <div class="form-group">
-                        <asp:LinkButton ID="NuevoButton" CssClass="btn btn-primary mt-4" runat="server">
+                        <asp:LinkButton ID="NuevoButton" CssClass="btn btn-primary mt-4" OnClick="NuevoButton_Click" runat="server">
                             <span class="fas fa-plus"></span>
                             Nuevo
                         </asp:LinkButton>
 
-                        <asp:LinkButton ID="GuardarButton2" CssClass="btn btn-success mt-4" runat="server">
+                        <asp:LinkButton ID="GuardarButton2" CssClass="btn btn-success mt-4" OnClick="GuardarButton2_Click" runat="server">
                             <span class="fas fa-save"></span>
                             Guardar
                         </asp:LinkButton>
 
-                        <asp:LinkButton ID="EliminarButton3" CssClass="btn btn-danger mt-4" runat="server">
+                        <asp:LinkButton ID="EliminarButton3" CssClass="btn btn-danger mt-4" OnClick="EliminarButton3_Click" runat="server">
                             <span class="fas fa-trash-alt"></span>
                             Eliminar
                         </asp:LinkButton>
@@ -294,7 +294,7 @@
             </div>
         </div>
     </div>
-    </div>
+    <%--</div>--%>
 
     <asp:ValidationSummary ID="ValidationSummary1" ShowMessageBox="true" ShowSummary="false" runat="server" />
 </asp:Content>

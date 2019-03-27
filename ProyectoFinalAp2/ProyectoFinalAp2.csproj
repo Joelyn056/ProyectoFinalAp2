@@ -122,8 +122,9 @@
     <Content Include="Content\Login\fonts\iconic\css\material-design-iconic-font.css" />
     <Content Include="Content\Login\fonts\iconic\css\material-design-iconic-font.min.css" />
     <Content Include="Content\Login\fonts\iconic\fonts\Material-Design-Iconic-Font.svg" />
-    <Content Include="Content\Login\images\avatar-01.jpg" />
     <Content Include="Content\Login\images\icons\favicon.ico" />
+    <Content Include="Content\Login\images\icons\logo.png" />
+    <Content Include="Content\Login\images\icons\Tienda.ico" />
     <Content Include="Content\Login\js\main.js" />
     <Content Include="Content\Login\vendor\animate\animate.css" />
     <Content Include="Content\Login\vendor\animsition\css\animsition.css" />
@@ -165,6 +166,9 @@
     <Content Include="Global.asax" />
     <Content Include="LogIn.aspx" />
     <Content Include="Reportes\ReporteCliente.aspx" />
+    <Content Include="Reportes\ReporteFactura.aspx" />
+    <Content Include="Reportes\ReporteProductos.aspx" />
+    <Content Include="Reportes\ReporteUsuarios.aspx" />
     <Content Include="Resources\1.jpg" />
     <Content Include="Resources\2.jpg" />
     <Content Include="Resources\Fondo.jpg" />
@@ -308,6 +312,27 @@
     <Compile Include="Reportes\ReporteCliente.aspx.designer.cs">
       <DependentUpon>ReporteCliente.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\ReporteFactura.aspx.cs">
+      <DependentUpon>ReporteFactura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteFactura.aspx.designer.cs">
+      <DependentUpon>ReporteFactura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteProductos.aspx.cs">
+      <DependentUpon>ReporteProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteProductos.aspx.designer.cs">
+      <DependentUpon>ReporteProductos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReporteUsuarios.aspx.cs">
+      <DependentUpon>ReporteUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteUsuarios.aspx.designer.cs">
+      <DependentUpon>ReporteUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -417,7 +442,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\ReportClientes.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteClientes.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteFactura.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteProductos.rdlc" />
+    <EmbeddedResource Include="Reportes\ReporteUsuarios.rdlc" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

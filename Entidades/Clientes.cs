@@ -14,7 +14,7 @@ namespace Entidades
         public int ClienteId { get; set; }
         public DateTime Fecha { get; set; }
         public string Nombres { get; set; }
-        public int Edad { get; set; }
+        public string Edad { get; set; }
         public string Sexo { get; set; }
         public string Ciudad { get; set; }
         public string Direccion { get; set; }
@@ -28,7 +28,7 @@ namespace Entidades
             ClienteId = 0;
             Nombres = string.Empty;
             Fecha = DateTime.Now;
-            Edad = 0;
+            Edad = string.Empty;
             Sexo = string.Empty;
             Ciudad = string.Empty;
             Direccion = string.Empty;
@@ -37,7 +37,7 @@ namespace Entidades
             Email = string.Empty;
         }
 
-        public Clientes(int clienteId, string nombres, int edad, string sexo, string ciudad, string direccion, string telefono, string celular, string email)
+        public Clientes(int clienteId, string nombres, string edad, string sexo, string ciudad, string direccion, string telefono, string celular, string email)
         {
             ClienteId = clienteId;
             Nombres = nombres;

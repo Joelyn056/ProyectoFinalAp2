@@ -127,12 +127,12 @@
                </div>
             </ContentTemplate>
      
-                <Triggers>
+<%--                <Triggers>
                     <asp:AsyncPostBackTrigger ControlID="GuardarLinkButton" />
                     <asp:AsyncPostBackTrigger ControlID="EliminarLinkButton" />
                     <asp:AsyncPostBackTrigger ControlID="NuevoLinkButton" />
                     <asp:AsyncPostBackTrigger ControlID="BuscarLinkButton"/>
-                </Triggers>
+                </Triggers>--%>
             </asp:UpdatePanel>
 
          <!--Card body end-->

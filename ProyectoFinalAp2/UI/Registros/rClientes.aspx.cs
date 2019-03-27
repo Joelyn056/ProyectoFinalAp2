@@ -23,7 +23,7 @@ namespace ProyectoFinalAp2.UI.Registros
 
             clientes.ClienteId = ToInt(ClienteIdTextBox.Text);
             clientes.Nombres = NombreTextBox.Text;
-            clientes.Edad = int.Parse(EdadTextBox.Text);
+            clientes.Edad = EdadTextBox.Text;
             clientes.Sexo = SexoDropDownList.SelectedValue;
             clientes.Ciudad = CiudadTextBox.Text;
             clientes.Telefono = TelefonoTextBox.Text;
@@ -80,24 +80,27 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void GuardarLinkButton_Click(object sender, EventArgs e)
         {
+             Repositorio<Clientes> rep = new Repositorio<Clientes>();
+             Clientes c = rep.Buscar(ToInt(ClienteIdTextBox.Text));               
+               
+
             if(Page.IsValid && isRefresh ==  false)
             {
-                Repositorio<Clientes> rep = new Repositorio<Clientes>();
-                Clientes c = rep.Buscar(ToInt(ClienteIdTextBox.Text));               
-               
+                
                 if(c == null)
-                    /*(ToInt(ClienteIdTextBox.Text) == 0)*/
-                {
-                    //if(ClientesBLL.Guardar<Clientes>(LlenaClase))
+                   
+                {                   
                     if(rep.Guardar(LlenaClase()))
                     {
-                        Limpiar();
+                        
                         CallModal("Se guardo el cliente");
+                        Limpiar();
                     }
                     else
                     {
-                        Limpiar();
+                        
                         CallModal("No se pudo guardar el cliente");
+                        Limpiar();
                     }
 
                 }
@@ -118,9 +121,9 @@ namespace ProyectoFinalAp2.UI.Registros
             Repositorio<Clientes> rep = new Repositorio<Clientes>();
             Clientes c = rep.Buscar(ToInt(ClienteIdTextBox.Text));
 
-            if(!isRefresh)
+            if(IsValid)
             {
-                //if(ClientesBLL.Eliminar<Clientes>(ClienteIdTextBox.Text)))
+                
                 if (rep.Eliminar(ToInt(ClienteIdTextBox.Text)))
                 {
                     CallModal("Se elimino el cliente");
@@ -128,6 +131,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 }
                 else
                     CallModal("El cliente no pudo ser elimiando");
+                   Limpiar();
 
 
             }
