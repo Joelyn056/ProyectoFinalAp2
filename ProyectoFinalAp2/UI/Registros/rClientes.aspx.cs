@@ -14,7 +14,10 @@ namespace ProyectoFinalAp2.UI.Registros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(!IsPostBack)
+            {
 
+            }
         }
 
         private Clientes LlenaClase()

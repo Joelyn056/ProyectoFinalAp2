@@ -29,6 +29,11 @@ namespace BLL
             {
                 throw;
             }
+            finally
+            {
+                _contexto.Dispose();
+
+            }
             return entity;
         }
 
@@ -85,6 +90,7 @@ namespace BLL
         public virtual bool Modificar(T entity)
         {
             bool paso = false;
+            _contexto = new Contexto();
             try
             {
                 _contexto.Entry(entity).State = EntityState.Modified;

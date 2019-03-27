@@ -17,9 +17,9 @@ namespace ProyectoFinalAp2.Reportes
             {
                 ClientesReporteViewer.ProcessingMode = ProcessingMode.Local;
                 ClientesReporteViewer.Reset();
-                ClientesReporteViewer.LocalReport.ReportPath = Server.MapPath(@"../Reportes/ReporteClientes.rdlc");
+                ClientesReporteViewer.LocalReport.ReportPath = Server.MapPath(@"~/Reportes/ReporteClientes.rdlc");
                 ClientesReporteViewer.LocalReport.DataSources.Clear();
-                ClientesReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ClientesDataSet", cClientes.lista));
+                ClientesReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ClientesDataSet", cClientes.listClientes));
                 ClientesReporteViewer.LocalReport.Refresh();
 
             }

@@ -16,7 +16,7 @@ namespace ProyectoFinalAp2.UI.Consultas
     public partial class cClientes : BasePage
     {
         Expression<Func<Clientes, bool>> filtro /*= x => true*/;
-        public static List<Clientes> lista = new List<Clientes>();
+        
         Repositorio<Clientes> repositorio = new Repositorio<Clientes>();
         public static List<Clientes> listClientes { get; set; }
 
@@ -24,18 +24,18 @@ namespace ProyectoFinalAp2.UI.Consultas
         {
             if (!IsPostBack)
             {
-                ClientesReporteViewer.ProcessingMode = ProcessingMode.Local;
-                ClientesReporteViewer.Reset();
-                ClientesReporteViewer.LocalReport.ReportPath = Server.MapPath(@"../Reportes/ReporteClientes.rdlc");
-                ClientesReporteViewer.LocalReport.DataSources.Clear();
-                ClientesReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ClientesDataSet", cClientes.lista));
-                ClientesReporteViewer.LocalReport.Refresh();
-
-            }
-            FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
+                ClienteReportViewer.ProcessingMode = ProcessingMode.Local;
+                ClienteReportViewer.Reset();
+                ClienteReportViewer.LocalReport.ReportPath = Server.MapPath(@"../Reportes/ReporteClientes.rdlc");
+                ClienteReportViewer.LocalReport.DataSources.Clear();
+                ClienteReportViewer.LocalReport.DataSources.Add(new ReportDataSource("ClientesDataSet", cClientes.listClientes));
+                ClienteReportViewer.LocalReport.Refresh();
+                FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 listClientes = repositorio.GetList(x => true);
+            }
+           
             
 
         }
@@ -106,7 +106,7 @@ namespace ProyectoFinalAp2.UI.Consultas
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Reportes/ClientesReporteViewer.aspx");
+            Response.Redirect(@"~/Reportes/ReporteCliente.aspx");
 
             //ClienteReportViewer.LocalReport.DataSources.Clear();
 

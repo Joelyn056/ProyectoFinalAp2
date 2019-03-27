@@ -2,6 +2,7 @@
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
    <script type="text/javascript">
         function openReport() {
             $("#<%=reportModal.ClientID%>").modal({
@@ -11,6 +12,7 @@
             $("#<%=reportModal.ClientID%>").modal("show");
         }
     </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentCP" runat="server">
       <%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
@@ -62,10 +64,7 @@
                     <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server" OnClick="BuscarLinkButton_Click"> <span class="fas fa-search"></span>Buscar </asp:LinkButton>
                 </div>
                    </div>
-             <div class="col-lg-1 p-0">
-            <button type="button" class="btn btn-outline-info mt-4" data-toggle="modal" data-target=".bd-example-modal-lg">Imprimir</button>
-
-        </div>
+          
             </div>
 
             <!--Grid-->

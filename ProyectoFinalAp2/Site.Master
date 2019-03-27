@@ -23,7 +23,7 @@
 
     <link href="~/Tienda.ico" rel="shortcut icon" type="image/x-icon" />
 
-   <%-- <script type="text/javascript">
+    <script type="text/javascript">
         function openModal() {
             $("#myModal").modal({
                 backdrop: 'static',
@@ -31,7 +31,7 @@
             });
             $("#myModal").modal("show");
         }
-    </script>--%>
+    </script>
      
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
