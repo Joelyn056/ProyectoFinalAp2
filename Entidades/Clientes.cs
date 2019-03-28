@@ -27,7 +27,7 @@ namespace Entidades
         {
             ClienteId = 0;
             Nombres = string.Empty;
-            Fecha = DateTime.Now;
+            Fecha = DateTime.Now.Date;
             Edad = string.Empty;
             Sexo = string.Empty;
             Ciudad = string.Empty;
@@ -41,7 +41,7 @@ namespace Entidades
         {
             ClienteId = clienteId;
             Nombres = nombres;
-            Edad = edad;
+            Edad = edad; //oye la direccion no la guardas en el llenaclase es lo0 que pasa para alla iba cuando te dije esperate
             Sexo = sexo;
             Ciudad = ciudad;
             Direccion = direccion;

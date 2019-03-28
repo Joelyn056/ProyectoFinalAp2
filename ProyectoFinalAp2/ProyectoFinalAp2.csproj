@@ -239,6 +239,7 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
     <None Include="Properties\PublishProfiles\EvolutionFitness - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\EvolutionFitness - Web Deploy1.pubxml" />
     <None Include="ProyectoFinalAp2DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>ProyectoFinalAp2DataSet.Designer.cs</LastGenOutput>
@@ -443,10 +444,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reportes\ReporteClientes.rdlc" />
-    <EmbeddedResource Include="Reportes\ReporteFactura.rdlc" />
-    <EmbeddedResource Include="Reportes\ReporteProductos.rdlc" />
-    <EmbeddedResource Include="Reportes\ReporteUsuarios.rdlc" />
+    <Content Include="Reportes\ReporteClientes.rdlc" />
+    <Content Include="Reportes\ReporteFactura.rdlc" />
+    <Content Include="Reportes\ReporteProductos.rdlc" />
+    <Content Include="Reportes\ReporteUsuarios.rdlc" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

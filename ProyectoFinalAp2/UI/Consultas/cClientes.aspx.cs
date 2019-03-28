@@ -15,8 +15,8 @@ namespace ProyectoFinalAp2.UI.Consultas
 {
     public partial class cClientes : BasePage
     {
-        Expression<Func<Clientes, bool>> filtro /*= x => true*/;
-        
+        Expression<Func<Clientes, bool>> filtro; /*= x => true*/
+        // no se por la funcion filtro esta que no trae todo que esta comentado
         Repositorio<Clientes> repositorio = new Repositorio<Clientes>();
         public static List<Clientes> listClientes { get; set; }
 
@@ -47,7 +47,7 @@ namespace ProyectoFinalAp2.UI.Consultas
             DateTime desde = Convert.ToDateTime(FInicialTextBox.Text);
             DateTime hasta = Convert.ToDateTime(FFinalTextBox.Text);
 
-            if (hasta.Date < desde.Date)
+            if (hasta < desde)
             {
                  CallModal("No Sera Posible Hacer Una Consulta Si El Rango Hasta Es Menor Que El Desde!!");
                 return;
@@ -56,12 +56,12 @@ namespace ProyectoFinalAp2.UI.Consultas
             switch (FiltroDropDownList.SelectedIndex)
             {
                 case 0://Todo
-                    filtro = p => true && p.Fecha >= desde && p.Fecha <= hasta;
+                    filtro = p => true && (p.Fecha >= desde && p.Fecha <= hasta); 
                     break;
-
+                    
                 case 1://ClienteId
                     id = ToInt(BuscarTextBox.Text);
-                    filtro = (p => p.ClienteId == id && p.Fecha >= desde && p.Fecha <= hasta);
+                    filtro = (p => p.ClienteId.Equals(id) && p.Fecha >= desde && p.Fecha <= hasta);
                     break;
 
                 case 2://Nombres
@@ -70,7 +70,7 @@ namespace ProyectoFinalAp2.UI.Consultas
 
                 case 3://Edad
                     //id = ToInt(BuscarTextBox.Text);
-                    filtro = (p => p.Edad.Equals(BuscarTextBox.Text));
+                    filtro = (p => p.Edad.Equals(BuscarTextBox.Text)); /// mira esto de id en clientes, o se deja asi
                     break;
 
                 case 4: // sexo
@@ -93,7 +93,8 @@ namespace ProyectoFinalAp2.UI.Consultas
                     filtro =( p => p.Email.Contains(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
                     break;
             }
-
+            //y clientes   que dijo? lo guarda vamos a imprimir, pero dejame darle a publish digo la consulta ella no la probe
+            // vamos a darle
             listClientes = repositorio.GetList(filtro);
             ClientesGridView.DataSource = listClientes;
             ClientesGridView.DataBind();

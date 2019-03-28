@@ -32,17 +32,18 @@ namespace ProyectoFinalAp2.UI.Registros
             clientes.Telefono = TelefonoTextBox.Text;
             clientes.Celular = CelularTextBox.Text;
             clientes.Email = EmailTextBox.Text;
+            clientes.Fecha = DateTime.Now.Date;
 
             return clientes;
                             
         }
-
+       
         private void Limpiar()
         {
             ClienteIdTextBox.Text = string.Empty;
             NombreTextBox.Text = string.Empty;
             EdadTextBox.Text = string.Empty;
-            SexoDropDownList.SelectedIndex = 0;
+            SexoDropDownList.SelectedIndex = 0;            
             CiudadTextBox.Text = string.Empty;
             TelefonoTextBox.Text = string.Empty;
             CelularTextBox.Text= string.Empty;
@@ -61,6 +62,7 @@ namespace ProyectoFinalAp2.UI.Registros
                     NombreTextBox.Text = c.Nombres;
                     EdadTextBox.Text = c.Edad.ToString();
                     SexoDropDownList.SelectedValue = c.Sexo;
+                    
                     CiudadTextBox.Text = c.Ciudad;
                     TelefonoTextBox.Text = c.Telefono;
                     CelularTextBox.Text = c.Celular;

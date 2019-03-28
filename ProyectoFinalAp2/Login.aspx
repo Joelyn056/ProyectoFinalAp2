@@ -37,13 +37,13 @@
 
 					<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
 						<%--<input class="input100" type="text" name="username">--%>
-                        <asp:TextBox CssClass="input100" ID="usuarioTextBox" runat="server" />
+                        <asp:TextBox AutoCompleteType="Disabled" CssClass="input100" ID="usuarioTextBox" runat="server" />
 						<span class="focus-input100" data-placeholder="Nombre Usuario"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
 						<%--<input class="input100" type="password" name="pass">--%>
-                        <asp:TextBox CssClass="input100" TextMode="Password" ID="passTextBox" runat="server" />
+                        <asp:TextBox AutoCompleteType="Disabled" CssClass="input100" TextMode="Password" ID="passTextBox" runat="server" />
 						<span class="focus-input100" data-placeholder="Contraseña"></span>
 					</div>
 

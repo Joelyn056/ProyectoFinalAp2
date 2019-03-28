@@ -106,6 +106,7 @@
             </div>
 
             <footer>
+                <asp:LoginStatus ID="LoginStatus1" runat="server" />
                 <p>&copy; <%: DateTime.Now.Year %> - Copyright Evolution Fitness</p>
             </footer>
         </div>

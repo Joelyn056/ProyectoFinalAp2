@@ -17,7 +17,7 @@ namespace DAL
         public DbSet<Usuarios> Usuarios { get; set; }
 
         public Contexto():base("ConStr")
-        {
+        { // esa es otra base de datos que tube que crear despues de subir varias veces y no nada
 
         }
     }

@@ -61,7 +61,7 @@
                     <asp:TextBox ID="BuscarTextBox" CssClass="form-control" runat="server"></asp:TextBox>
                 </div>
                 <div class="col-lg-1 p-0">
-                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" runat="server" OnClick="BuscarLinkButton_Click"> <span class="fas fa-search"></span>Buscar </asp:LinkButton>
+                    <asp:LinkButton ID="BuscarLinkButton" CssClass="btn btn-secondary mt-4" OnClick="BuscarLinkButton_Click" runat="server"> <span class="fas fa-search"></span>Buscar </asp:LinkButton>
                 </div>
                    </div>
           
@@ -74,6 +74,7 @@
                    <%-- <asp:GridView ID="ClientesGridView" runat="server" AllowPaging="true" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="ClientesGridView_PageIndexChanging">--%>
                         <Columns>
                             <asp:BoundField DataField="ClienteId" HeaderText="ClienteId" />
+                            <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
                             <asp:BoundField DataField="Nombres" HeaderText="Nombres" />
                             <asp:BoundField DataField="Edad" HeaderText="Edad" />
                             <asp:BoundField DataField="Sexo" HeaderText="Sexo" />
