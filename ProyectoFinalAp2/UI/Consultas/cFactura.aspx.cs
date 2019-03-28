@@ -106,5 +106,10 @@ namespace ProyectoFinalAp2.UI.Consultas
         {
             return listFacturas;
         }
+
+        protected void ImprimirLinkButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(@"~/Reportes/ReporteFactura.aspx");
+        }
     }
 }

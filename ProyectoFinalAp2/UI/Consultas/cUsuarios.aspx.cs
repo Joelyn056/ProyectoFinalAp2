@@ -43,7 +43,7 @@ namespace ProyectoFinalAp2.UI.Consultas
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect(@"~/Reportes/ReporteUsuarios.aspx");
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)

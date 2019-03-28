@@ -516,8 +516,8 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>4.445cm</Top>
         <Left>0.29104cm</Left>
-        <Height>2.04667cm</Height>
-        <Width>26.53772cm</Width>
+        <Height>2.04666cm</Height>
+        <Width>26.5377cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -643,7 +643,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Listado de Facturas</Value>
+                <Value>Listado de Productos</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>times New Roman</FontFamily>

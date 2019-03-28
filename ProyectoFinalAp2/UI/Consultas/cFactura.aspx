@@ -89,7 +89,7 @@
             <!--Imprmir-->
             <div class="row justify-content-end">
                 <div class="col-lg-2">
-                    <asp:LinkButton ID="ImprimirLinkButton" CssClass="btn btn-warning" runat="server" >
+                    <asp:LinkButton ID="ImprimirLinkButton" CssClass="btn btn-warning" runat="server" OnClick="ImprimirLinkButton_Click" >
                         <span class="fas fa-print"></span>
                         Imprimir
                     </asp:LinkButton>

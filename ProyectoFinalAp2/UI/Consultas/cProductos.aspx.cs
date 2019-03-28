@@ -9,6 +9,7 @@ using Entidades;
 using BLL;
 using System.Linq.Expressions;
 using Microsoft.Reporting.WebForms;
+using System.Globalization;
 
 
 namespace ProyectoFinalAp2.UI.Consultas
@@ -94,6 +95,8 @@ namespace ProyectoFinalAp2.UI.Consultas
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
         {
+            Response.Redirect(@"~/Reportes/ReporteProductos.aspx");
+
             //ProductoReportViewer.LocalReport.DataSources.Clear();
 
             //ProductoReportViewer.LocalReport.DataSources.Add(
@@ -102,8 +105,8 @@ namespace ProyectoFinalAp2.UI.Consultas
             //        ProductosBLL.GetList<Productos>(filtro)));
             //ProductoReportViewer.LocalReport.Refresh();
 
-            ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
-                            "$(function() { openReport(); });", true);
+            //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
+            //                "$(function() { openReport(); });", true);
         }
     }
 }
