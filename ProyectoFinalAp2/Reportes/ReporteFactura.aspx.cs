@@ -16,12 +16,12 @@ namespace ProyectoFinalAp2.Reportes
 
             if (!IsPostBack)
             {
-                FactutaReportViewer.ProcessingMode = ProcessingMode.Local;
-                FactutaReportViewer.Reset();
-                FactutaReportViewer.LocalReport.ReportPath = Server.MapPath(@"~/Reportes/ReporteFactura.rdlc");
-                FactutaReportViewer.LocalReport.DataSources.Clear();
-                FactutaReportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", cClientes.listClientes));
-                FactutaReportViewer.LocalReport.Refresh();
+                FacturaReportViewer.ProcessingMode = ProcessingMode.Local;
+                FacturaReportViewer.Reset();
+                FacturaReportViewer.LocalReport.ReportPath = Server.MapPath(@"~/Reportes/ReporteFactura.rdlc");
+                FacturaReportViewer.LocalReport.DataSources.Clear();
+                FacturaReportViewer.LocalReport.DataSources.Add(new ReportDataSource("ProductoDataSet", cFactura.listFacturas));
+                FacturaReportViewer.LocalReport.Refresh();
 
             }
         }

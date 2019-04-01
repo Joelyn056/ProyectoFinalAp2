@@ -25,6 +25,7 @@ namespace ProyectoFinalAp2.UI.Registros
             CostoTextBox.Text = string.Empty;
             PrecioTextBox.Text = string.Empty;
             GananciaTextBox.Text = string.Empty;
+            InventarioTextBox.Text = string.Empty;
         }
 
         private Productos LlenaClase()
@@ -37,6 +38,7 @@ namespace ProyectoFinalAp2.UI.Registros
             producto.Costo = ToDecimal(CostoTextBox.Text);
             producto.Precio = ToDecimal(PrecioTextBox.Text);
             producto.Ganancias = ToDecimal(GananciaTextBox.Text);
+            producto.Inventario = ToInt(InventarioTextBox.Text);
 
             return producto;
                  
@@ -50,6 +52,7 @@ namespace ProyectoFinalAp2.UI.Registros
             CostoTextBox.Text = p.Costo.ToString();
             PrecioTextBox.Text = p.Precio.ToString();
             GananciaTextBox.Text = p.Ganancias.ToString();
+            InventarioTextBox.Text = p.Inventario.ToString();
 
         }
 
@@ -99,7 +102,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 {
                     if(rep.Modificar(LlenaClase()))
                     {
-                        CallModal("Se Modifico la cuenta");
+                        CallModal("Se Modifico el producto");
                         Limpiar();
                     }
                 }

@@ -84,12 +84,12 @@
 
             <!--Inventario-->
 
-<%--            <div class="form-group row justify-content-center">
-                <asp:Label ID="Label6" CssClass="col-lg-2 col-form-label" TextMode="Number" runat="server">Inventario:</asp:Label>
+            <div class="form-group row justify-content-center">
+                <asp:Label ID="Label6" CssClass="col-lg-2 col-form-label"  runat="server">Inventario:</asp:Label>
                 <div class="col-lg-2">
-                    <asp:TextBox ID="InventarioTextBox" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="InventarioTextBox" CssClass="form-control" ReadOnly="false" TextMode="Number" runat="server"></asp:TextBox>
                 </div>
-            </div>--%>
+            </div>
 
             <!--Card body end-->
         </div>

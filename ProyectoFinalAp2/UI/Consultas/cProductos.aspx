@@ -52,7 +52,7 @@
                         <asp:ListItem>Costo</asp:ListItem>
                         <asp:ListItem>Precio</asp:ListItem>
                         <asp:ListItem>Ganancias</asp:ListItem>
-                        <%--<asp:ListItem>Inventario</asp:ListItem>--%>
+                        <asp:ListItem>Inventario</asp:ListItem>
                     </asp:DropDownList>
                 </div>  
                 <div class="col-lg-1"></div>
@@ -80,6 +80,7 @@
                             <asp:BoundField DataField="Costo" HeaderText="Costo" />
                             <asp:BoundField DataField="Precio" HeaderText="Precio" />
                             <asp:BoundField DataField="Ganancias" HeaderText="Ganancias" />
+                            <asp:BoundField DataField="Inventario" HeaderText="Inventario" />
                         </Columns>    
                     </asp:GridView>
                 </div>

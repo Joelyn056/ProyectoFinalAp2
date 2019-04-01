@@ -17,7 +17,7 @@ namespace ProyectoFinalAp2.UI.Consultas
 {
     public partial class cFactura : BasePage
     {
-        Expression<Func<Facturas, bool>> filtro /*= x => true*/;
+        Expression<Func<Facturas, bool>> filtro; /*= x => true*/
         Repositorio<Facturas> repositorio = new Repositorio<Facturas>();
         public static List<Facturas> listFacturas { get; set; }
 
@@ -27,6 +27,9 @@ namespace ProyectoFinalAp2.UI.Consultas
             {
                 FacturaReportViewer.ProcessingMode = ProcessingMode.Local;
                 FacturaReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteFactura.rdlc");
+                FacturaReportViewer.LocalReport.DataSources.Clear();
+                FacturaReportViewer.LocalReport.DataSources.Add(new ReportDataSource("FacturaDataSet", cFactura.listFacturas));
+                FacturaReportViewer.LocalReport.Refresh();
                 FacturaReportViewer.AsyncRendering = true;
 
                 FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
@@ -70,30 +73,10 @@ namespace ProyectoFinalAp2.UI.Consultas
                     filtro = (p => p.ClienteId == id && p.Fecha >= desde && p.Fecha <= hasta);
                     break;
 
-                //case 4://ProductoId
-                //    id = ToInt(BuscarTextBox.Text);
-                //    filtro = (p => p.D == id && p.Fecha >= desde && p.Fecha <= hasta);
-                //    break;
-
-                    //case 5://Precio
-                    //    id = ToInt(BuscarTextBox.Text);
-                    //    filtro = (p => p.Precio == id && p.Fecha >= desde && p.Fecha <= hasta);
-                    //    break;
-
-                    //case 6://Cantidad
-                    //    id = ToInt(BuscarTextBox.Text);
-                    //    filtro = (p => p.Cantidad == id && p.Fecha >= desde && p.Fecha <= hasta);
-                    //    break;
-
-                    //case 7://Importe
-                    //    id = ToInt(BuscarTextBox.Text);
-                    //    filtro = (p => p.Importe == id && p.Fecha >= desde && p.Fecha <= hasta);
-                    //    break;
-
-                    //case 8://Monto
-                    //    id = ToInt(BuscarTextBox.Text);
-                    //    filtro = (p => p.Monto == id && p.Fecha >= desde && p.Fecha <= hasta);
-                    //    break;
+                //case 4: //Monto
+                //    decimal monto = ToDecimal(BuscarLinkButton.Text);
+                //    filtro = p => p.ClienteId.Equals(monto) && p.Fecha >=  desde && p.Fecha <= hasta;
+              
 
             }
 

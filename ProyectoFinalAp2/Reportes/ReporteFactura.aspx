@@ -21,7 +21,7 @@
            <%---ScriptManager---%>
             <asp:ScriptManager runat="server"></asp:ScriptManager>
 
-            <rsweb:ReportViewer ID="FactutaReportViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
+            <rsweb:ReportViewer ID="FacturaReportViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
                 <ServerReport ReportPath="" ReportServerUrl="" />
             </rsweb:ReportViewer>
         </div>

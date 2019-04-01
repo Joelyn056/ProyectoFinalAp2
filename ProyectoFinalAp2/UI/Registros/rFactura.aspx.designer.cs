@@ -139,6 +139,15 @@ namespace ProyectoFinalAp2.UI.Registros {
         protected global::System.Web.UI.WebControls.LinkButton AddLinkButton;
         
         /// <summary>
+        /// RemoberLinkButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton RemoberLinkButton;
+        
+        /// <summary>
         /// FacturaGridView control.
         /// </summary>
         /// <remarks>

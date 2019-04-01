@@ -137,7 +137,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 {
                     if (rep.Guardar(LlenaClase()))
                     {
-                        CallModal("Se guardo el producto");
+                        CallModal("Se guardo el Usuario");
                         Limpiar();
 
                     }
@@ -146,7 +146,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 {
                     if (rep.Modificar(LlenaClase()))
                     {
-                        CallModal("Se Modifico la cuenta");
+                        CallModal("Se Modifico el Usuario");
                         Limpiar();
                     }
                 }
@@ -163,19 +163,34 @@ namespace ProyectoFinalAp2.UI.Registros
             {
                 if (rep.Eliminar(ToInt(UsuarioIdTextBox.Text)))
                 {
-                    CallModal("Se a eliminado el producto");
+                    CallModal("Se ha eliminado el Usuario");
                     Limpiar();
 
                 }
                 else
-                    CallModal("No se pudo eliminar el producto");
+                    CallModal("No se pudo eliminar el Usuario");
                 Limpiar();
             }
         }
 
         protected void BuscarLinkButton_Click1(object sender, EventArgs e)
         {
+            if(! isRefresh)
+            {
+                Repositorio<Usuarios> rep = new Repositorio<Usuarios>();
+                Usuarios u = rep.Buscar(ToInt(UsuarioIdTextBox.Text));
 
+                if(u != null)
+                {
+                    LlenaCampos(u);
+
+                }
+                else
+                {
+                    CallModal("Este Usuario no existe");
+                    Limpiar();
+                }
+            }
         }
     }
 }

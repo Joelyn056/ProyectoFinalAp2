@@ -108,6 +108,12 @@ namespace BLL
             {
                 if (contexto.Facturas.Add(entity) != null)
                 {
+                    //foreach(var item in entity.Detalle)// linea nueva
+                    //{
+                    //    contexto.Productos.Find(item.ProductoId).Inventario -= item.Cantidad;//
+
+                    //}
+
                     contexto.SaveChanges();
                     paso = true;
                 }

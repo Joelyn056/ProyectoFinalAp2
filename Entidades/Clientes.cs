@@ -41,7 +41,7 @@ namespace Entidades
         {
             ClienteId = clienteId;
             Nombres = nombres;
-            Edad = edad; //oye la direccion no la guardas en el llenaclase es lo0 que pasa para alla iba cuando te dije esperate
+            Edad = edad; 
             Sexo = sexo;
             Ciudad = ciudad;
             Direccion = direccion;

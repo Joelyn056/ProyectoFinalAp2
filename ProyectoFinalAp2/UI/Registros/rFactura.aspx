@@ -31,7 +31,7 @@
             <div class="form-row">
                 <%--FacturaId--%>
                 <div class="form-group col-md-1">
-                    <asp:Label Text="FacturaId" class="text-primary" runat="server" />
+                    <asp:Label Text="FacturaId" runat="server" />
                     <asp:TextBox ID="FacturaIdTextBox" class="form-control input-sm" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFVId" ValidationGroup="Buscar" ControlToValidate="FacturaIdTextBox" runat="server" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
 
@@ -72,7 +72,7 @@
                 <%--Precio--%>
                 <div class="form-group col-md-1">
                     <asp:Label Text="Precio" runat="server" />
-                    <asp:TextBox ID="PrecioTextBox" class="form-control input-sm" AutoPostBack="true" AutoCompleteType="Disabled" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
+                    <asp:TextBox ID="PrecioTextBox" class="form-control input-sm" AutoPostBack="true" ReadOnly="true" AutoCompleteType="Disabled" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
                 </div>
 
                 <%--Cantidad--%>
@@ -87,82 +87,20 @@
                     <asp:Label Text="Importe" runat="server" />
                     <asp:TextBox ID="ImporteTextBox" class="form-control input-sm" AutoPostBack="true" OnTextChanged="ImporteTextBox_TextChanged" AutoCompleteType="Disabled" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
                 </div>
-
-
-
-                <%-- <!--FacturaId-->
-            <div class="form-group row justify-content-center">
-                <asp:Label ID="Label1" CssClass="col-lg-2 col-form-label mr-2" runat="server" Text="FacturaId">FacturaId:</asp:Label>
-                <div class="col-lg-4">
-                    <asp:TextBox ID="FacturaIdTextBox" TextMode="Number" CssClass="form-control" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-lg-1">
-                    <asp:LinkButton ID="BuscarLinkButton" CausesValidation="false" CssClass="btn btn-primary" runat="server">
-                        <span class="fas fa-search"></span>
-                        Buscar
-                    </asp:LinkButton>
-                </div>
-                <div class="form-group row justify-content-center"></div>
-                <asp:Label ID="Label2" CssClass="col-lg-2 col-form-label" runat="server" Text="Fecha">Fecha:</asp:Label>
-                <div class="col-lg-3 p-0">
-                    <asp:TextBox ID="FechaTextBox" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
-                </div>
-            </div>
-
-            <!--clienteId-->
-           
-            <div class="form-group row justify-content-cente">
-                <asp:Label ID="Label3" CssClass="col-lg-2 col-form-label mr-2" runat="server" Text="ClienteId">ClienteId:</asp:Label>
-                <div class="col-lg-2"<%-- style="left: 0px; top: 0px"--%>
-                <%-- <asp:DropDownList ID="ClienteDropDownList" CssClass="form-control" runat="server">
-                        <asp:ListItem></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-            </div>--%>
-
-                <%--Producto--%>
-                <%--<div class="form-group col-md-3">
-                <asp:Label ID="Label5" CssClass="form-control input-sm" Text="Producto" runat="server">Producto:</asp:Label>
-                <div class="col-lg-4 ">
-                    <asp:DropDownList ID="ProductoDropDownList" CssClass="form-control" runat="server">
-                        <asp:ListItem></asp:ListItem>
-                    </asp:DropDownList>
-                </div>
-                <div class="col-lg-1">
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="ProductoDropDownList" Text="*" runat="server" ErrorMessage="Debe seleccionar un producto"></asp:RequiredFieldValidator>
-                             
-                </div>
-            </div>--%>
-
-                <%--Precio--%>
-
-                <%-- <div class="form-group col-md-3">
-                <asp:Label Text="Precio" runat="server" />
-                <asp:TextBox ID="PrecioTextBox" class="form-control input-sm" AutoPostBack="true" ReadOnly="true" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
-            </div>--%>
-
-                <%--Cantidad--%>
-                <%--  <div class=" form-group col-md-1 <%--form-inline--%> <%--row justify-content-center--%>
-                <%-- <asp:Label ID="Label6" CssClass="col-form-label" runat="server" Text="Cantidad">Cantidad:</asp:Label>
-                <div class="col-lg-2 p-0" style="left: 0px; top: 0px">
-                    <asp:TextBox ID="CantidadTextBox" TextMode="Number" CssClass="form-group col-md-1" ReadOnly="false" runat="server"></asp:TextBox>
-                </div>
-            </div>--%>
-
-                <%--Importe--%>
-                <%--  <div class="form-group row justify-content-end">
-                <asp:Label ID="Label7" CssClass="col-lg-1 col-form-label" runat="server" Text="Importe">Importe:</asp:Label>
-                <div class="col-lg-3 mr-5">
-                    <asp:TextBox ID="ImporteTextBox" CssClass="form-control" ReadOnly="true" runat="server"></asp:TextBox>
-                </div>
-            </div>--%>
-
-
+       
                 <!--Añadir boton-->
                 <div class="col-lg-1 ">
                     <asp:LinkButton ID="AddLinkButton" CssClass="btn btn-primary mt-4" runat="server" OnClick="AddLinkButton_Click">
                           <span class="fas fa-plus"></span>
-                          Add
+                          Agregar
+                    </asp:LinkButton>
+                </div>
+
+                <%--Remober fila--%>
+                <div class="col-lg-1 ">
+                    <asp:LinkButton ID="RemoberLinkButton" CssClass="btn btn-danger mt-4" runat="server" OnClick="LinkButton1_Click" >
+                          <span class="fas fa-times"></span>
+                          Remover
                     </asp:LinkButton>
                 </div>
 
@@ -170,11 +108,11 @@
             <!--Grid-->
             <div class="row justify-content-center">
                 <div class="col-lg-11">
-                    <asp:GridView ID="FacturaGridView" OnPageIndexChanging="FacturaGridView_PageIndexChanging" runat="server" AllowPaging="true" CellPadding="4" PageSize="7" ForeColor="#333333" GridLines="None" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False">
+                    <asp:GridView ID="FacturaGridView" OnPageIndexChanging="FacturaGridView_PageIndexChanging" runat="server"  CellPadding="4" AllowPaging="true" PageSize="7" ForeColor="#333333" GridLines="None" class="table table-condensed table-bordered table-responsive-lg" AutoGenerateColumns="False">
                         <%--  <asp:GridView ID="FacturaGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="FacturaGridView_SelectedIndexChanged">--%>
                         <%--<asp:GridView ID="FacturaGridView" runat="server" AllowPaging="True" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="ClientesGridView_PageIndexChanging" OnRowCancelingEdit="FacturaGridView_RowCancelingEdit" OnRowEditing="FacturaGridView_RowEditing" OnRowUpdating="FacturaGridView_RowUpdating">--%>
                         <Columns>
-                            <asp:CommandField ControlStyle-CssClass="btn btn-secondary" ButtonType="Button" ShowEditButton="True" />
+                            <asp:CommandField ControlStyle-CssClass="btn btn-secondary" ButtonType="Button"/>  <%-- ShowEditButton="True"--%> 
                             <asp:BoundField DataField="FacturaId" HeaderText="FacturaId" ReadOnly="True" />
                             <asp:BoundField DataField="ProductoId" HeaderText="ProductoId" ReadOnly="True" />
                             <asp:BoundField DataField="Descripcion" HeaderText="Descripcion" ReadOnly="True" />
@@ -189,9 +127,9 @@
 
 
             <!--Monto-->
-            <div class="form-group col-md-3">
+            <div class="form-group row justify-content-end">
                 <asp:Label ID="Label4" CssClass="col-lg-1 col-form-label" runat="server" Text="Monto">Monto:</asp:Label>
-                <div class="col-lg-6 ">
+                <div class="col-lg-2 mr-5 ">
                     <asp:TextBox ID="MontoTextBox" CssClass="form-control input-sm" AutoPostBack="true" ReadOnly="true" TextMode="Number" runat="server" OnTextChanged="MontoTextBox_TextChanged"></asp:TextBox>
                 </div>
             </div>
@@ -206,25 +144,28 @@
                 <!--Butones-->
 
                 <div class="row justify-content-center">
+
+                    <!--Nuevo-->
                     <div class="form-group">
                         <asp:LinkButton ID="NuevoButton" CssClass="btn btn-primary mt-4" OnClick="NuevoButton_Click" runat="server">
                             <span class="fas fa-plus"></span>
                             Nuevo
                         </asp:LinkButton>
 
+                        <!--Guardar-->
                         <asp:LinkButton ID="GuardarButton2" CssClass="btn btn-success mt-4" OnClick="GuardarButton2_Click" runat="server">
                             <span class="fas fa-save"></span>
                             Guardar
                         </asp:LinkButton>
 
+                        <!--Eliminar-->
                         <asp:LinkButton ID="EliminarButton3" CssClass="btn btn-danger mt-4" OnClick="EliminarButton3_Click" runat="server">
                             <span class="fas fa-trash-alt"></span>
                             Eliminar
                         </asp:LinkButton>
-                    
-                
 
-                <asp:LinkButton ID="ImprimirButton" CssClass="btn btn-warning mt-4" runat="server">
+                           <!--Imprimir-->       
+                <asp:LinkButton ID="ImprimirButton" CssClass="btn btn-warning mt-4" runat="server" OnClick="ImprimirButton_Click">
                             <span class="fas fa-print"></span>
                             Imprimir
                 </asp:LinkButton>
@@ -232,48 +173,8 @@
             </div>
 
         </div>
-        </div>
+      </div>
 
-
-        <%-- <div class="card-footer">--%>
-        <!--Nuevo-->
-        <%--                                <div class="justify-content-start">
-                                    
-                                    <asp:LinkButton ID="NuevoLinkButton" CssClass="btn btn-primary" runat="server" CausesValidation="False">
-                                   <span class="fas fa-plus"></span>
-                                     Nuevo
-                                    </asp:LinkButton>
-                                </div>--%>
-
-        <!--Guardar-->
-        <%--  <div class="justify-content-star">
-                                    <asp:LinkButton ID="GuardarLinkButton" CssClass="btn btn-success" runat="server">
-                                     <span class="fas fa-save"></span>
-                                  Guardar
-                                    </asp:LinkButton>
-                                </div>--%>
-
-        <!--Eliminar-->
-        <%--<div class="justify-content-star">
-                                    <asp:LinkButton ID="EliminarLinkButton" CssClass="btn btn-danger" runat="server" CausesValidation="False">
-                                   <span class="fas fa-trash-alt"></span>
-                                 Eliminar
-                                    </asp:LinkButton>
-                                </div>--%>
-
-        <!--Imprimir-->
-        <%--  <div class="col-lg-1 mr-3">
-                                    <asp:LinkButton ID="ImprimirLinkButton" CssClass="btn btn-warning" runat="server" CausesValidation="False">
-                                   <span class="fas fa-print"></span>
-                                 Imprimir
-                                    </asp:LinkButton>
-                                </div>
-
-
-                            </div>--%>
-
-        <!--Card footer end-->
-        <%--</div>--%>
     </div>
 
     <!--Report Modal-->

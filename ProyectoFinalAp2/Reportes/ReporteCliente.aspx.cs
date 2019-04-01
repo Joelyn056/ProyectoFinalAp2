@@ -22,6 +22,8 @@ namespace ProyectoFinalAp2.Reportes
                 ClientesReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ClientesDataSet", cClientes.listClientes));
                 ClientesReporteViewer.LocalReport.Refresh();
 
+                
+
             }
         }
     }

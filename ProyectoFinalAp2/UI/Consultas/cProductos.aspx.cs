@@ -11,7 +11,6 @@ using System.Linq.Expressions;
 using Microsoft.Reporting.WebForms;
 using System.Globalization;
 
-
 namespace ProyectoFinalAp2.UI.Consultas
 {
     public partial class cProductos : BasePage
@@ -25,16 +24,18 @@ namespace ProyectoFinalAp2.UI.Consultas
         {
             if (!IsPostBack)
             {
-                ClienteReportViewer.ProcessingMode = ProcessingMode.Local;
-                ClienteReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteProducto.rdlc");
-                ClienteReportViewer.AsyncRendering = true;
+
+                //ProductosReporteViewer.ProcessingMode = ProcessingMode.Local;
+                //ProductosReporteViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteProducto.rdlc");
+                //ProductosReporteViewer.AsyncRendering = true;
+                //ProductosReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ProductoDataSet", cProductos.listProductos));
+                //ProductosReporteViewer.LocalReport.Refresh();
 
                 FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
 
                 listProductos = repositorio.GetList(x => true);
             }
-
         }
 
         protected void BuscarLinkButton_Click(object sender, EventArgs e)
@@ -81,6 +82,10 @@ namespace ProyectoFinalAp2.UI.Consultas
                     filtro = (p => p.Ganancias.Equals(BuscarTextBox.Text) && p.FechaRegistro >= desde && p.FechaRegistro <= hasta);
                     break;
 
+                case 7:// Inventario
+                    filtro = (p => p.Inventario.Equals(BuscarTextBox.Text) && p.FechaRegistro >= desde && p.FechaRegistro <= hasta);
+                    break;
+
             }
 
             listProductos = repositorio.GetList(filtro);
@@ -108,5 +113,8 @@ namespace ProyectoFinalAp2.UI.Consultas
             //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
             //                "$(function() { openReport(); });", true);
         }
+
+
+
     }
 }

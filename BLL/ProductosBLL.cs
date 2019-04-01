@@ -22,7 +22,7 @@ namespace BLL
             {
                 if (contexto.Productos.Add(productos) != null)
                 {
-                    /*Productos productos = BLL.ProductosBLL.Buscar(productos.ProductoId);*/
+                   
                     contexto.SaveChanges();
                     paso = true;
                 }

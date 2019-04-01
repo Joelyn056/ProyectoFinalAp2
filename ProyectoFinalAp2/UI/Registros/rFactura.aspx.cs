@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using Entidades;
 using BLL;
 using ProyectoFinalAp2.App_Code;
+using Microsoft.Reporting.WebForms;
 
 
 namespace ProyectoFinalAp2.UI.Registros
@@ -35,10 +36,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 LlenarDropDownListClientes();
             }
             else
-            {
-                //borra tu base de datos y deja que te la cree solo, asi va ver menos conflicto
-                //prueba pero tengo que descomentar esto
-                
+            {            
                 detalles = (List<FacturaDetalles>)ViewState["Detalle"];
                 //facturas = (Facturas)ViewState["Factura"];
             }
@@ -76,7 +74,7 @@ namespace ProyectoFinalAp2.UI.Registros
         {
             
             facturas.FacturaId = ToInt(FacturaIdTextBox.Text);
-            facturas.Fecha = DateTime.Parse(FechaTextBox.Text);
+            facturas.Fecha = ToDateTime(FechaTextBox.Text);
             facturas.ClienteId = ToInt(ClienteDropDownList.SelectedValue);
             facturas.Total = ToDecimal(MontoTextBox.Text);
             facturas.Detalle = detalles;
@@ -95,6 +93,7 @@ namespace ProyectoFinalAp2.UI.Registros
             ImporteTextBox.Text = string.Empty;
             MontoTextBox.Text = string.Empty;
             FacturaGridView.DataSource = null;
+            FacturaGridView.DataBind();///nueva linea
             //ViewState["Detalle"] = null;
 
 
@@ -102,6 +101,12 @@ namespace ProyectoFinalAp2.UI.Registros
 
         private void LlenarCampo(Facturas facturas)
         {
+            //ClienteDropDownList.SelectedValue = facturas.ClienteId.ToString();
+            //FacturaGridView.DataSource = facturas.Detalle;
+            //FacturaGridView.DataBind();
+            //MontoTextBox.Text = facturas.Total.ToString();
+
+
             ClienteDropDownList.DataSource = repositorioProducto.GetList(x => true);
             ProductoDropDownList.DataValueField = "ProductoId";
             ProductoDropDownList.DataTextField = "Descripcion";
@@ -143,30 +148,29 @@ namespace ProyectoFinalAp2.UI.Registros
 
             return MontoTextBox.Text = monto.ToString();
         }
+        
 
-        protected void BuscarLinkButton_Click(object sender, EventArgs e)
+        protected void BuscarLinkButton_Click1(object sender, EventArgs e)
         {
-            if (!IsValid)
+            if (!isRefresh)
             {
-               Facturas factura = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
+                Repositorio<Facturas> rep = new Repositorio<Facturas>();
+                Facturas f = rep.Buscar(ToInt(FacturaIdTextBox.Text));
 
-              
-
-                if(FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text)) != null)
-                    
-                { 
-                    CallModal("Se encontro la factura");
-                    LlenarCampo(factura);
-                }
+                if (f != null)             
+                {
+                    LlenarCampo(f);
+                    Limpiar();
+                }  
                 else
                 {
-                    CallModal("No hay resultado");
+                    CallModal("Esta factura no Existe");
+                    Limpiar();
                 }
+                
             }
         }
-
-        //Mi loco pues
-
+        
         protected void NuevoButton_Click(object sender, EventArgs e)
         {
             Limpiar();
@@ -189,28 +193,30 @@ namespace ProyectoFinalAp2.UI.Registros
 
                      CallModal("Factura Guardada");
                      Limpiar();
-                    }                  
+                    }
+                    else
+                    {
+                        CallModal("No se pudo guardar la Factura");
+                        Limpiar();
+                    }
 
                 }
                 else
                 {
-                    CallModal("No Guardado");
-                    Limpiar();
+                    if (repositorio.Modificar(LlenaClase()))
+                    {
+                        CallModal("Factura Modificada");
+                        Limpiar();
+                    }
+                    else
+                    {
+                        CallModal("No se modifico");
+                        Limpiar();
+                    }
                 }
+
             }
-            else
-            {
-                if(FacturaRepositorio.Modificar(LlenaClase()))
-                {
-                    CallModal("Factura Modificada");
-                    Limpiar();
-                }
-                else
-                {
-                    CallModal("No se modifico");
-                    Limpiar();
-                }
-            }
+           
         }
 
         protected void EliminarButton3_Click(object sender, EventArgs e)
@@ -279,27 +285,12 @@ namespace ProyectoFinalAp2.UI.Registros
                 MontoTextBox.Text = "";
         }
 
-        //protected void FacturaGridView_PageIndexChanging(object sender, EventArgs e)
-        //{
-        //    FacturaGridView.DataSource = ViewState["Factura"];
-        //    FacturaGridView.PageIndex = e.NewPageIndex;
-        //    FacturaGridView.DataBind();
-        //}
-
-        //private int Entero(string valor)
-        //{
-        //    int retorno = 0;
-        //    int.TryParse(valor, out retorno);
-
-        //    return retorno;
-        //}
-
+     
         protected void AddLinkButton_Click(object sender, EventArgs e)
         {
             if (IsValid)
             {
-                // como tu llamas el reporte con modal en la consulta porque segun veo tu consultas son sin esta parte digo los portes
-                // y cuando llamo al modal no hace nadita 
+               
                 detalles.Add(new FacturaDetalles(
                     0,
                     ToInt(FacturaIdTextBox.Text),
@@ -307,13 +298,14 @@ namespace ProyectoFinalAp2.UI.Registros
                     ProductoDropDownList.SelectedItem.ToString(),
                     ToInt(CantidadTextBox.Text),
                     ToDecimal(PrecioTextBox.Text),
-                    ToDecimal(ImporteTextBox.Text)
+                    ToDecimal(ImporteTextBox.Text)                 
                     ));
                            
                 ViewState["Detalle"] = detalles;
                 //this.BindGrid();
                 FacturaGridView.DataSource = detalles;
                 FacturaGridView.DataBind();
+               
             }
         }
 
@@ -338,28 +330,22 @@ namespace ProyectoFinalAp2.UI.Registros
         {
 
         }
+        
+        
 
-        protected void BuscarLinkButton_Click1(object sender, EventArgs e)
+        protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            if (!isRefresh)
-            {
-                Repositorio<Facturas> rep = new Repositorio<Facturas>();
-                Facturas f = rep.Buscar(ToInt(FacturaIdTextBox.Text));
+            //if(FacturaGridView.Rows.Count > 0  && FacturaGridView.CurrentRow ! == null )
+            //{
+            //    List<FacturaDetalles> detalles = (List<FacturaDetalles>)FacturaGridView.DataSource;
+            //    detalles.RemoveAt(FacturaGridView.CurrentRow.Index);
 
-                if (f != null)
-                {
-                    LlenarCampo(f);
-                }
-                else
-                {
-                    CallModal("Esta factura no existe");
-                    Limpiar();
-                }
-                // lo hago asi como ese pasandole cada cosa
-                //aunque le estoy pasanto el llena campo deberia tirar todo lo del llena campo
-                //tu no haz revisado tu base de datos para ver que id tiene
-                // no, porque como no habia funcionado no podia guardar, pero dejmae hacer un select
-            }
+            //} 
+        }
+
+        protected void ImprimirButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(@"~/Reportes/ReporteFactura.aspx");
         }
     }
 }

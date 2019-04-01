@@ -74,7 +74,13 @@ namespace ProyectoFinalAp2.UI.Registros
                     CallModal("Este cliente no existe");
                     Limpiar();
                 }
+
                    
+            }
+            else
+            {
+                CallModal("No hay resultado");
+                Limpiar();
             }
         }
 
@@ -126,9 +132,8 @@ namespace ProyectoFinalAp2.UI.Registros
             Repositorio<Clientes> rep = new Repositorio<Clientes>();
             Clientes c = rep.Buscar(ToInt(ClienteIdTextBox.Text));
 
-            if(IsValid)
-            {
-                
+            if(c != null)
+            {               
                 if (rep.Eliminar(ToInt(ClienteIdTextBox.Text)))
                 {
                     CallModal("Se elimino el cliente");
@@ -137,7 +142,6 @@ namespace ProyectoFinalAp2.UI.Registros
                 else
                     CallModal("El cliente no pudo ser elimiando");
                    Limpiar();
-
 
             }
         }

@@ -15,9 +15,9 @@ namespace DAL
         public DbSet<Facturas> Facturas { get; set; }
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Usuarios> Usuarios { get; set; }
-
-        public Contexto():base("ConStr")
-        { // esa es otra base de datos que tube que crear despues de subir varias veces y no nada
+      
+        public Contexto():base("ConStr") 
+        { 
 
         }
     }
