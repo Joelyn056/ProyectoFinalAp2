@@ -9,11 +9,10 @@ using Entidades;
 using BLL;
 using System.Linq.Expressions;
 using Microsoft.Reporting.WebForms;
-using System.Globalization;
 
 namespace ProyectoFinalAp2.UI.Consultas
 {
-    public partial class cProductos : BasePage
+    public partial class cProducto : BasePage
     {
         Expression<Func<Productos, bool>> filtro; // = p => true;
         Repositorio<Productos> repositorio = new Repositorio<Productos>();
@@ -22,14 +21,15 @@ namespace ProyectoFinalAp2.UI.Consultas
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if(!IsPostBack)
             {
 
-                //ProductosReporteViewer.ProcessingMode = ProcessingMode.Local;
-                //ProductosReporteViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteProducto.rdlc");
-                //ProductosReporteViewer.AsyncRendering = true;
-                //ProductosReporteViewer.LocalReport.DataSources.Add(new ReportDataSource("ProductoDataSet", cProductos.listProductos));
-                //ProductosReporteViewer.LocalReport.Refresh();
+                ProductoReportViewer.ProcessingMode = ProcessingMode.Local;
+                ProductoReportViewer.Reset();
+                ProductoReportViewer.LocalReport.ReportPath = Server.MapPath(@"~/Reportes/ReporteProducto.rdlc");
+                ProductoReportViewer.LocalReport.DataSources.Clear();
+                ProductoReportViewer.LocalReport.DataSources.Add(new ReportDataSource("Producto", cProducto.listProductos));
+                ProductoReportViewer.LocalReport.Refresh();
 
                 FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
@@ -100,7 +100,7 @@ namespace ProyectoFinalAp2.UI.Consultas
 
         protected void ImprimirLinkButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect(@"~/Reportes/ReporteProductos.aspx");
+            Response.Redirect(@"~/Reportes/ReporteProducto.aspx");
 
             //ProductoReportViewer.LocalReport.DataSources.Clear();
 
@@ -113,8 +113,5 @@ namespace ProyectoFinalAp2.UI.Consultas
             //ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Report",
             //                "$(function() { openReport(); });", true);
         }
-
-
-
     }
 }

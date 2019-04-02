@@ -24,9 +24,6 @@
         <!--Card body-->
         <div class="card-body">
 
-            <%--<div class="card card-register mx-auto mt-5">
-                <div class="card-header text-uppercase text-center text-primary">Facturacion</div>
-                <div class="card-body">--%>
 
             <div class="form-row">
                 <%--FacturaId--%>

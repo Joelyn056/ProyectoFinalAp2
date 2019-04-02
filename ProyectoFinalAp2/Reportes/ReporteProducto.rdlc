@@ -6,30 +6,30 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>4.42295cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.42295cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.42295cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.42295cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.42295cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.7911cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>1.02333cm</Height>
+              <Height>1.07625cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -163,7 +163,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Costo</Value>
+                              <Value>Ganancias</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -204,7 +204,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Precio</Value>
+                              <Value>Costo</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -238,6 +238,47 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox11">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Precio</Value>
+                              <Style>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>#666666</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox11</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BottomBorder>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                          <Width>1pt</Width>
+                        </BottomBorder>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox13">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -245,7 +286,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Ganancias</Value>
+                              <Value>Inventario</Value>
                               <Style>
                                 <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -277,51 +318,10 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox1">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>Inventario</Value>
-                              <Style>
-                                <FontSize>11pt</FontSize>
-                                <FontWeight>Bold</FontWeight>
-                                <Color>#666666</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox1</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <BottomBorder>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                          <Width>1pt</Width>
-                        </BottomBorder>
-                        <BackgroundColor>White</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>1.02333cm</Height>
+              <Height>1.07625cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -430,6 +430,41 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Ganancias">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Ganancias.Value</Value>
+                              <Style>
+                                <FontWeight>Normal</FontWeight>
+                                <Color>#333333</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Ganancias</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <BackgroundColor>White</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Costo">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -485,41 +520,6 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Precio</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Style>None</Style>
-                        </Border>
-                        <BackgroundColor>White</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Ganancias">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!Ganancias.Value</Value>
-                              <Style>
-                                <FontWeight>Normal</FontWeight>
-                                <Color>#333333</Color>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style>
-                            <TextAlign>Center</TextAlign>
-                          </Style>
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Ganancias</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>None</Style>
@@ -593,31 +593,29 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>ProductosDataSet</DataSetName>
-        <Top>4.445cm</Top>
-        <Left>0.29104cm</Left>
-        <Height>2.04666cm</Height>
-        <Width>27.11475cm</Width>
+        <DataSetName>Producto</DataSetName>
+        <Top>4.36563cm</Top>
+        <Height>2.1525cm</Height>
+        <Width>26.53772cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
         </Style>
       </Tablix>
-      <Textbox Name="Textbox4">
+      <Textbox Name="Textbox8">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Evolution Fitness</Value>
+                <Value>   Teléfono: (829)-725-3210  Websites: EvolutionFitness.azurewebsites.net</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>times New Roman</FontFamily>
-                  <FontSize>20pt</FontSize>
+                  <FontSize>12pt</FontSize>
                   <FontWeight>Bold</FontWeight>
-                  <Color>Blue</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -627,9 +625,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.03647in</Top>
-        <Left>0.11458in</Left>
-        <Height>0.375in</Height>
+        <Top>0.75522in</Top>
+        <Height>0.22917in</Height>
         <Width>10.44792in</Width>
         <ZIndex>1</ZIndex>
         <Style>
@@ -664,8 +661,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.45314in</Top>
-        <Left>0.11458in</Left>
+        <Top>0.5573in</Top>
         <Height>0.22917in</Height>
         <Width>10.44792in</Width>
         <ZIndex>2</ZIndex>
@@ -679,19 +675,20 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox8">
+      <Textbox Name="Textbox4">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>   Teléfono: (829)-725-3210  Websites: EvolutionFiness.azurewebsites.net</Value>
+                <Value>Evolution Fitness</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>times New Roman</FontFamily>
-                  <FontSize>12pt</FontSize>
+                  <FontSize>20pt</FontSize>
                   <FontWeight>Bold</FontWeight>
+                  <Color>Blue</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -701,9 +698,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.65105in</Top>
-        <Left>0.11458in</Left>
-        <Height>0.22917in</Height>
+        <Top>0.14064in</Top>
+        <Height>0.375in</Height>
         <Width>10.44792in</Width>
         <ZIndex>3</ZIndex>
         <Style>
@@ -738,8 +734,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>1.05035in</Top>
-        <Left>0.11458in</Left>
+        <Top>1.15452in</Top>
         <Height>0.27084in</Height>
         <Width>10.44792in</Width>
         <ZIndex>4</ZIndex>
@@ -754,10 +749,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>3.38542in</Height>
+    <Height>3.59375in</Height>
     <Style />
   </Body>
-  <Width>11.54675in</Width>
+  <Width>10.44792in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
@@ -775,11 +770,11 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>91884070-421c-4f3f-880d-6507fa842711</rd:DataSourceID>
+      <rd:DataSourceID>bfdb4fad-d286-442e-b03b-16249dfece39</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="ProductosDataSet">
+    <DataSet Name="Producto">
       <Query>
         <DataSourceName>ProyectoFinalAp2DataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
@@ -815,8 +810,8 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>ProductoDataSet</rd:DataSetName>
-        <rd:SchemaPath>E:\UCNE\Aplicada II\Proyecto Final Web\ProyectoFinalAp2\ProyectoFinalAp2\ProductoDataSet.xsd</rd:SchemaPath>
+        <rd:DataSetName>ProyectoFinalAp2DataSet</rd:DataSetName>
+        <rd:SchemaPath>E:\UCNE\Aplicada II\Proyecto Final Web\ProyectoFinalAp2\ProyectoFinalAp2\ProyectoFinalAp2DataSet.xsd</rd:SchemaPath>
         <rd:TableName>Productos</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
@@ -825,5 +820,5 @@
     </DataSet>
   </DataSets>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>8e17431f-b97c-4c50-b1da-6b5d311552b9</rd:ReportID>
+  <rd:ReportID>a3d98612-1c04-4483-8e0a-7fd47a92de33</rd:ReportID>
 </Report>

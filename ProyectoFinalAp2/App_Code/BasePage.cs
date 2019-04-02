@@ -48,7 +48,7 @@ namespace ProyectoFinalAp2.App_Code
        
         protected int ToInt(string text)
         {
-            return (string.IsNullOrWhiteSpace(text)) ? 0 : int.Parse(text);
+            return (string.IsNullOrEmpty(text)) ? 0 : int.Parse(text);
         }
 
         protected decimal ToDecimal(string text)

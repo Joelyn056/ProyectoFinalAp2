@@ -44,7 +44,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>   Teléfono: (829)-725-3210  Websites: EvolutionFiness.azurewebsites.net</Value>
+                <Value>   Teléfono: (829)-725-3210  Websites: EvolutionFitness.azurewebsites.net</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>times New Roman</FontFamily>
@@ -600,7 +600,7 @@
         <DataSetName>FacturaDataSet1</DataSetName>
         <Top>4.30954cm</Top>
         <Height>1.59688cm</Height>
-        <Width>27.12043cm</Width>
+        <Width>27.12042cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>

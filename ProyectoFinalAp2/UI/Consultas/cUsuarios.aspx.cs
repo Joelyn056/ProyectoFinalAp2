@@ -23,9 +23,13 @@ namespace ProyectoFinalAp2.UI.Consultas
         {
             if (!IsPostBack)
             {
-                //UsuariosReportViewer.ProcessingMode = ProcessingMode.Local;
-                //UsuariosReportViewer.LocalReport.ReportPath = Server.MapPath(@"~\Reportes\ReporteUsuarios.rdlc");
-                //UsuariosReportViewer.AsyncRendering = true;
+                UsuarioReportViewer.ProcessingMode = ProcessingMode.Local;
+                UsuarioReportViewer.Reset();
+                UsuarioReportViewer.LocalReport.ReportPath = Server.MapPath(@"~/Reportes/ReporteUsuarios.rdlc");
+                UsuarioReportViewer.LocalReport.DataSources.Clear();
+                UsuarioReportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", cUsuarios.listUsuarios));
+                UsuarioReportViewer.LocalReport.Refresh();
+
 
                 FInicialTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 FFinalTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");

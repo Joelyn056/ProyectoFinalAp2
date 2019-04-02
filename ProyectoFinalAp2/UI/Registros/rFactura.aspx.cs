@@ -85,7 +85,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private void Limpiar()
         {
             FacturaIdTextBox.Text = string.Empty;
-            FechaTextBox.Text = DateTime.Now.ToString("dd-MM-yyyy");
+            FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
             ClienteDropDownList.SelectedIndex = 0;
             ProductoDropDownList.SelectedIndex = 0;
             CantidadTextBox.Text = string.Empty;
@@ -112,6 +112,8 @@ namespace ProyectoFinalAp2.UI.Registros
             ProductoDropDownList.DataTextField = "Descripcion";
             ProductoDropDownList.AppendDataBoundItems = true;
             ProductoDropDownList.DataBind();
+            FacturaGridView.DataSource = facturas.Detalle;
+            FacturaGridView.DataBind();
             FiltrarPrecio();
         }
 
@@ -152,23 +154,21 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void BuscarLinkButton_Click1(object sender, EventArgs e)
         {
-            if (!isRefresh)
-            {
-                Repositorio<Facturas> rep = new Repositorio<Facturas>();
-                Facturas f = rep.Buscar(ToInt(FacturaIdTextBox.Text));
+           
+            Repositorio<Facturas> rep = new Repositorio<Facturas>();
+            Facturas f = rep.Buscar(ToInt(FacturaIdTextBox.Text));
 
-                if (f != null)             
-                {
-                    LlenarCampo(f);
-                    Limpiar();
-                }  
-                else
-                {
-                    CallModal("Esta factura no Existe");
-                    Limpiar();
-                }
+            if (f != null)             
+            {
+                LlenarCampo(f);
                 
+            }  
+            else
+            {
+                CallModal("Esta factura no Existe");
+                Limpiar();
             }
+                
         }
         
         protected void NuevoButton_Click(object sender, EventArgs e)

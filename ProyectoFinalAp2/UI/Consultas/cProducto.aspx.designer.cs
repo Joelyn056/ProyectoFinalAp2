@@ -10,7 +10,7 @@
 namespace ProyectoFinalAp2.UI.Consultas {
     
     
-    public partial class cProductos {
+    public partial class cProducto {
         
         /// <summary>
         /// Label1 control.
@@ -121,12 +121,12 @@ namespace ProyectoFinalAp2.UI.Consultas {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl reportModal;
         
         /// <summary>
-        /// ClienteReportViewer control.
+        /// ProductoReportViewer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer ClienteReportViewer;
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ProductoReportViewer;
     }
 }

@@ -1,7 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteProductos.aspx.cs" Inherits="ProyectoFinalAp2.Reportes.ReporteProductos" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ReporteProducto.aspx.cs" Inherits="ProyectoFinalAp2.Reportes.ReporteProducto" %>
 
 <%@ Register assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" namespace="Microsoft.Reporting.WebForms" tagprefix="rsweb" %>
-
 
 <!DOCTYPE html>
 
@@ -20,7 +19,7 @@
            <%---ScriptManager---%>
             <asp:ScriptManager runat="server"></asp:ScriptManager>
 
-            <rsweb:ReportViewer ID="ProductosReporteViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
+            <rsweb:ReportViewer ID="ProductoReporteViewer" runat="server"  Height="800px" Width="1000px" ProcessingMode="Remote">
                 <ServerReport ReportPath="" ReportServerUrl="" />
             </rsweb:ReportViewer>
         </div>

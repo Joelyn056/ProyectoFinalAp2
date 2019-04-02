@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="cProductos.aspx.cs" Inherits="ProyectoFinalAp2.UI.Consultas.cProductos" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="cProducto.aspx.cs" Inherits="ProyectoFinalAp2.UI.Consultas.cProducto" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -105,7 +105,7 @@
             <div class="modal-content">
                 <!--Body-->
                 <div class="modal-body">
-                    <rsweb:reportviewer ID="ClienteReportViewer" Width="100%" runat="server">
+                    <rsweb:reportviewer ID="ProductoReportViewer" Width="100%" runat="server">
                         <ServerReport ReportPath=""  ReportServerUrl=""/>
                     </rsweb:reportviewer>
                 </div>
@@ -118,4 +118,4 @@
         </div>
     </div>
 
-    </asp:Content>
+ </asp:Content>

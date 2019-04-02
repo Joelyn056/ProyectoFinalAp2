@@ -1508,6 +1508,8 @@ namespace ProyectoFinalAp2 {
             
             private global::System.Data.DataColumn columnPrecio;
             
+            private global::System.Data.DataColumn columnInventario;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ProductosDataTable() {
@@ -1591,6 +1593,14 @@ namespace ProyectoFinalAp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn InventarioColumn {
+                get {
+                    return this.columnInventario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1626,7 +1636,7 @@ namespace ProyectoFinalAp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ProductosRow AddProductosRow(System.DateTime FechaRegistro, string Descripcion, decimal Ganancias, decimal Costo, decimal Precio) {
+            public ProductosRow AddProductosRow(System.DateTime FechaRegistro, string Descripcion, decimal Ganancias, decimal Costo, decimal Precio, int Inventario) {
                 ProductosRow rowProductosRow = ((ProductosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1634,7 +1644,8 @@ namespace ProyectoFinalAp2 {
                         Descripcion,
                         Ganancias,
                         Costo,
-                        Precio};
+                        Precio,
+                        Inventario};
                 rowProductosRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowProductosRow);
                 return rowProductosRow;
@@ -1670,6 +1681,7 @@ namespace ProyectoFinalAp2 {
                 this.columnGanancias = base.Columns["Ganancias"];
                 this.columnCosto = base.Columns["Costo"];
                 this.columnPrecio = base.Columns["Precio"];
+                this.columnInventario = base.Columns["Inventario"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1687,6 +1699,8 @@ namespace ProyectoFinalAp2 {
                 base.Columns.Add(this.columnCosto);
                 this.columnPrecio = new global::System.Data.DataColumn("Precio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrecio);
+                this.columnInventario = new global::System.Data.DataColumn("Inventario", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnInventario);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnProductoId}, true));
                 this.columnProductoId.AutoIncrement = true;
@@ -2852,6 +2866,22 @@ namespace ProyectoFinalAp2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Inventario {
+                get {
+                    try {
+                        return ((int)(this[this.tableProductos.InventarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Inventario\' in table \'Productos\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableProductos.InventarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsFechaRegistroNull() {
                 return this.IsNull(this.tableProductos.FechaRegistroColumn);
             }
@@ -2908,6 +2938,18 @@ namespace ProyectoFinalAp2 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetPrecioNull() {
                 this[this.tableProductos.PrecioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsInventarioNull() {
+                return this.IsNull(this.tableProductos.InventarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetInventarioNull() {
+                this[this.tableProductos.InventarioColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4487,6 +4529,7 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
             tableMapping.ColumnMappings.Add("Ganancias", "Ganancias");
             tableMapping.ColumnMappings.Add("Costo", "Costo");
             tableMapping.ColumnMappings.Add("Precio", "Precio");
+            tableMapping.ColumnMappings.Add("Inventario", "Inventario");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -4496,25 +4539,27 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Productos] ([FechaRegistro], [Descripcion], [Ganancias], [Cost" +
-                "o], [Precio]) VALUES (@FechaRegistro, @Descripcion, @Ganancias, @Costo, @Precio)" +
-                "";
+                "o], [Precio], [Inventario]) VALUES (@FechaRegistro, @Descripcion, @Ganancias, @C" +
+                "osto, @Precio, @Inventario)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaRegistro", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaRegistro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ganancias", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "Ganancias", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "Costo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Precio", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "Precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Inventario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Inventario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Productos] SET [FechaRegistro] = @FechaRegistro, [Descripcion] = @D" +
-                "escripcion, [Ganancias] = @Ganancias, [Costo] = @Costo, [Precio] = @Precio WHERE" +
-                " (([ProductoId] = @Original_ProductoId))";
+                "escripcion, [Ganancias] = @Ganancias, [Costo] = @Costo, [Precio] = @Precio, [Inv" +
+                "entario] = @Inventario WHERE (([ProductoId] = @Original_ProductoId))";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FechaRegistro", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FechaRegistro", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descripcion", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descripcion", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ganancias", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "Ganancias", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Costo", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "Costo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Precio", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 16, 2, "Precio", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Inventario", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Inventario", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ProductoId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ProductoId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
@@ -4531,8 +4576,8 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ProductoId, FechaRegistro, Descripcion, Ganancias, Costo, Precio FROM dbo." +
-                "Productos";
+            this._commandCollection[0].CommandText = "SELECT ProductoId, FechaRegistro, Descripcion, Ganancias, Costo, Precio,Inventari" +
+                "o FROM dbo.Productos";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4615,7 +4660,7 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<global::System.DateTime> FechaRegistro, string Descripcion, global::System.Nullable<decimal> Ganancias, global::System.Nullable<decimal> Costo, global::System.Nullable<decimal> Precio) {
+        public virtual int Insert(global::System.Nullable<global::System.DateTime> FechaRegistro, string Descripcion, global::System.Nullable<decimal> Ganancias, global::System.Nullable<decimal> Costo, global::System.Nullable<decimal> Precio, global::System.Nullable<int> Inventario) {
             if ((FechaRegistro.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((System.DateTime)(FechaRegistro.Value));
             }
@@ -4646,6 +4691,12 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
+            if ((Inventario.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Inventario.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4666,7 +4717,7 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(global::System.Nullable<global::System.DateTime> FechaRegistro, string Descripcion, global::System.Nullable<decimal> Ganancias, global::System.Nullable<decimal> Costo, global::System.Nullable<decimal> Precio, int Original_ProductoId) {
+        public virtual int Update(global::System.Nullable<global::System.DateTime> FechaRegistro, string Descripcion, global::System.Nullable<decimal> Ganancias, global::System.Nullable<decimal> Costo, global::System.Nullable<decimal> Precio, global::System.Nullable<int> Inventario, int Original_ProductoId) {
             if ((FechaRegistro.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = ((System.DateTime)(FechaRegistro.Value));
             }
@@ -4697,7 +4748,13 @@ namespace ProyectoFinalAp2.ProyectoFinalAp2DataSetTableAdapters {
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_ProductoId));
+            if ((Inventario.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Inventario.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_ProductoId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

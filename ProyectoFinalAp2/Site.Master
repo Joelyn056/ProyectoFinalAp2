@@ -72,7 +72,7 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Consultas</a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" runat="server" href="~/UI/Consultas/cClientes.aspx">Cliente</a>
-                                    <a class="dropdown-item" runat="server" href="~/UI/Consultas/cProductos.aspx">Productos</a>
+                                    <a class="dropdown-item" runat="server" href="~/UI/Consultas/cProducto.aspx">Productos</a>
                                     <a class="dropdown-item" runat="server" href="~/UI/Consultas/cUsuarios.aspx">Usuarios</a>
                                     <a class="dropdown-item" runat="server" href="~/UI/Consultas/cFactura.aspx">Factura</a>
                                 </div>

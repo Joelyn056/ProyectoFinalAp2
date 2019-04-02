@@ -515,8 +515,8 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>4.07458cm</Top>
-        <Height>1.86145cm</Height>
-        <Width>26.53772cm</Width>
+        <Height>1.86144cm</Height>
+        <Width>26.5377cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -603,7 +603,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>   Teléfono: (829)-725-3210  Websites: EvolutionFiness.azurewebsites.net</Value>
+                <Value>   Teléfono: (829)-725-3210  Websites: EvolutionFitness.azurewebsites.net</Value>
                 <Style>
                   <FontStyle>Italic</FontStyle>
                   <FontFamily>times New Roman</FontFamily>

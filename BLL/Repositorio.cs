@@ -30,11 +30,7 @@ namespace BLL
             {
                 throw;
             }
-            finally
-            {
-                _contexto.Dispose();
-
-            }
+           
             return entity;
         }
 

@@ -79,7 +79,7 @@
 
            <!--Tipo Usuario-->
                 <div class="form-group row justify-content-center">
-                    <asp:Label ID="Label6" CssClass="col-lg-2 col-form-label mr-2" runat="server" Text="Tipo Usuario">Tipo Usuario:</asp:Label>
+                    <asp:Label ID="Label6" CssClass="col-lg-1 col-form-label mr-2" runat="server" Text="Tipo Usuario">Tipo Usuario:</asp:Label>
                     <div class="col-lg-4">
                         <asp:DropDownList ID="TipoUsuarioDropDownList" CssClass="form-control" runat="server">
                             <asp:ListItem></asp:ListItem>                        
