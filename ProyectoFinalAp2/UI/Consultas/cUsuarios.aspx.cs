@@ -78,9 +78,9 @@ namespace ProyectoFinalAp2.UI.Consultas
                     filtro = (x => x.Fecha == date);
                     break;
 
-                case 3://Usuario
-                    filtro = (p => p.Usuario.Contains(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
-                    break;
+                //case 3://Usuario
+                //    filtro = (p => p.Usuario.Contains(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);
+                //    break;
 
                 case 4: // NombreUsuario
                     filtro = (p => p.NombreUsuario.Equals(BuscarTextBox.Text) && p.Fecha >= desde && p.Fecha <= hasta);

@@ -18,7 +18,7 @@ namespace ProyectoFinalAp2.UI.Registros
             if(!Page.IsPostBack)
             {               
                 LlenarDropDown();
-                FechaTextBox.Text = DateTime.Now.Date.ToString("dd-MM-yyyy");
+                FechaTextBox.Text = DateTime.Now.Date.ToString("yyyy-MM-dd");
                 int id = ToInt(Request.QueryString["id"]);
 
                 if(id >0)

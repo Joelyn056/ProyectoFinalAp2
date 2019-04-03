@@ -43,7 +43,7 @@
                     <asp:DropDownList ID="FiltroDropDownList" CssClass="form-control" runat="server">
                         <asp:ListItem></asp:ListItem>
                         <asp:ListItem>UsuarioId</asp:ListItem>
-                        <asp:ListItem>Usuario</asp:ListItem>
+                        <%--<asp:ListItem>Usuario</asp:ListItem>--%>
                         <asp:ListItem>Contraseña</asp:ListItem>
                         <asp:ListItem>Tipo Usuario</asp:ListItem>
                     </asp:DropDownList>
@@ -68,6 +68,7 @@
                    <%-- <asp:GridView ID="UsuarioGridView" runat="server" AllowPaging="true" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="UsuarioGridView_PageIndexChanging">--%>
                         <Columns>
                             <asp:BoundField DataField="UsuarioId" HeaderText="UsuarioId" />
+                            <%--<asp:BoundField DataField="Usuario" HeaderText="Usuario" />--%>
                             <asp:BoundField DataField="NombreUsuario" HeaderText="Usuario" />
                             <asp:BoundField DataField="Contrasena" HeaderText="Contraseña" />
                             <asp:BoundField DataField="TipoUsuario" HeaderText="TipoUsuario" />

@@ -22,6 +22,7 @@ namespace ProyectoFinalAp2.UI.Registros
         private List<FacturaDetalles> detalles = new List<FacturaDetalles>();
 
         string condicion = "";
+        int a = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,6 +32,7 @@ namespace ProyectoFinalAp2.UI.Registros
                 FechaTextBox.Text = DateTime.Now.ToString("yyyy-MM-dd");
                 ViewState.Add("Detalle", detalles);
                 ViewState.Add("Factura", facturas);
+                ViewState.Add("Index", a);
 
                 LlenarDropDownListProductos();
                 LlenarDropDownListClientes();
@@ -161,6 +163,7 @@ namespace ProyectoFinalAp2.UI.Registros
             if (f != null)             
             {
                 LlenarCampo(f);
+                ViewState["Detalle"] = f.Detalle;
                 
             }  
             else
@@ -182,40 +185,35 @@ namespace ProyectoFinalAp2.UI.Registros
             FacturaRepositorio repositorio = new FacturaRepositorio();
             Facturas factura = repositorio.Buscar(ToInt(FacturaIdTextBox.Text));
 
-            if (IsValid)
+           
+            if (factura == null)
             {
-                factura = FacturaRepositorio.Buscar(ToInt(FacturaIdTextBox.Text));
-
-                if (factura == null)
+                if(repositorio.Guardar(LlenaClase()))
                 {
-                    if(repositorio.Guardar(LlenaClase()))
-                    {
 
-                     CallModal("Factura Guardada");
-                     Limpiar();
-                    }
-                    else
-                    {
-                        CallModal("No se pudo guardar la Factura");
-                        Limpiar();
-                    }
-
+                    CallModal("Factura Guardada");
+                    Limpiar();
                 }
                 else
                 {
-                    if (repositorio.Modificar(LlenaClase()))
-                    {
-                        CallModal("Factura Modificada");
-                        Limpiar();
-                    }
-                    else
-                    {
-                        CallModal("No se modifico");
-                        Limpiar();
-                    }
+                    CallModal("No se pudo guardar la Factura");
+                    Limpiar();
                 }
 
             }
+            else
+            {
+                if (repositorio.Modificar(LlenaClase()))
+                {
+                    CallModal("Factura Modificada");
+                    Limpiar();
+                }
+                else
+                {
+                    CallModal("No se modifico");
+                    Limpiar();
+                }
+            }          
            
         }
 
@@ -298,14 +296,20 @@ namespace ProyectoFinalAp2.UI.Registros
                     ProductoDropDownList.SelectedItem.ToString(),
                     ToInt(CantidadTextBox.Text),
                     ToDecimal(PrecioTextBox.Text),
-                    ToDecimal(ImporteTextBox.Text)                 
+                    ToDecimal(ImporteTextBox.Text)                   
+                    
                     ));
                            
                 ViewState["Detalle"] = detalles;
                 //this.BindGrid();
                 FacturaGridView.DataSource = detalles;
                 FacturaGridView.DataBind();
-               
+                decimal monto = 0;
+                detalles.ForEach(x => monto += x.Importe);
+                MontoTextBox.Text = monto.ToString();
+
+
+
             }
         }
 
@@ -335,17 +339,48 @@ namespace ProyectoFinalAp2.UI.Registros
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            //if(FacturaGridView.Rows.Count > 0  && FacturaGridView.CurrentRow ! == null )
-            //{
-            //    List<FacturaDetalles> detalles = (List<FacturaDetalles>)FacturaGridView.DataSource;
-            //    detalles.RemoveAt(FacturaGridView.CurrentRow.Index);
+            
+            if (FacturaGridView.Rows.Count > 0 && FacturaGridView.SelectedIndex >= 0)
+            {
+                int indice = int.Parse(ViewState["Index"].ToString());
+                RecalcularMonto(detalles[indice].Importe);
+                detalles.RemoveAt(indice);
+                ViewState["Detalle"] = detalles;
+                FacturaGridView.DataSource = detalles;
+                FacturaGridView.DataBind();
 
-            //} 
+                Repositorio<Facturas> rep = new Repositorio<Facturas>();
+            }
+        }
+
+        private void RecalcularMonto(decimal valor)
+        {
+            if (!string.IsNullOrEmpty(MontoTextBox.Text))
+            {
+                decimal monto = decimal.Parse(MontoTextBox.Text) - valor;
+                MontoTextBox.Text = monto.ToString();
+            }
         }
 
         protected void ImprimirButton_Click(object sender, EventArgs e)
         {
             Response.Redirect(@"~/Reportes/ReporteFactura.aspx");
+        }
+
+        protected void FacturaGridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewState["Index"] = FacturaGridView.SelectedIndex;
+        }
+
+        protected void FacturaGridView_RowCreated(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onmouseover"] = "this.style.cursor='pointer';this.style.textDecoration='underline';";
+                e.Row.Attributes["onmouseout"] = "this.style.textDecoration='none';";
+                e.Row.ToolTip = "Click to select row";
+                e.Row.Attributes["onclick"] = this.Page.ClientScript.GetPostBackClientHyperlink(this.FacturaGridView, "Select$" + e.Row.RowIndex);
+            }
         }
     }
 }

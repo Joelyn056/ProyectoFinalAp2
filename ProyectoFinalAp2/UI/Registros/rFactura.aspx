@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="rFactura.aspx.cs" Inherits="ProyectoFinalAp2.UI.Registros.rFactura" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master"  EnableEventValidation="false" AutoEventWireup="true" CodeBehind="rFactura.aspx.cs" Inherits="ProyectoFinalAp2.UI.Registros.rFactura" %>
 
 <%@ Register Assembly="Microsoft.ReportViewer.WebForms" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 
@@ -28,7 +28,7 @@
             <div class="form-row">
                 <%--FacturaId--%>
                 <div class="form-group col-md-1">
-                    <asp:Label Text="FacturaId" runat="server" />
+                    <asp:Label ID="FacturaIdLabel" Text="FacturaId" runat="server" />
                     <asp:TextBox ID="FacturaIdTextBox" class="form-control input-sm" TextMode="Number" runat="server" placeholder="0"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RFVId" ValidationGroup="Buscar" ControlToValidate="FacturaIdTextBox" runat="server" ErrorMessage="*" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
 
@@ -105,7 +105,7 @@
             <!--Grid-->
             <div class="row justify-content-center">
                 <div class="col-lg-11">
-                    <asp:GridView ID="FacturaGridView" OnPageIndexChanging="FacturaGridView_PageIndexChanging" runat="server"  CellPadding="4" AllowPaging="true" PageSize="7" ForeColor="#333333" GridLines="None" class="table table-condensed table-bordered table-responsive-lg" AutoGenerateColumns="False">
+                    <asp:GridView ID="FacturaGridView" OnPageIndexChanging="FacturaGridView_PageIndexChanging" runat="server"  CellPadding="4" AllowPaging="true" PageSize="7" ForeColor="#333333" GridLines="None" class="table table-condensed table-bordered table-responsive-lg" AutoGenerateColumns="False" OnRowCreated="FacturaGridView_RowCreated" OnSelectedIndexChanged="FacturaGridView_SelectedIndexChanged">
                         <%--  <asp:GridView ID="FacturaGridView" runat="server" class="table table-condensed table-bordered table-responsive" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="FacturaGridView_SelectedIndexChanged">--%>
                         <%--<asp:GridView ID="FacturaGridView" runat="server" AllowPaging="True" PageSize="7" CssClass="table table-striped table-hover table-responsive-lg" AutoGenerateColumns="False" OnPageIndexChanging="ClientesGridView_PageIndexChanging" OnRowCancelingEdit="FacturaGridView_RowCancelingEdit" OnRowEditing="FacturaGridView_RowEditing" OnRowUpdating="FacturaGridView_RowUpdating">--%>
                         <Columns>
