@@ -162,10 +162,10 @@
                         </asp:LinkButton>
 
                            <!--Imprimir-->       
-                <asp:LinkButton ID="ImprimirButton" CssClass="btn btn-warning mt-4" runat="server" OnClick="ImprimirButton_Click">
+              <%--  <asp:LinkButton ID="ImprimirButton" CssClass="btn btn-warning mt-4" runat="server" OnClick="ImprimirButton_Click">
                             <span class="fas fa-print"></span>
                             Imprimir
-                </asp:LinkButton>
+                </asp:LinkButton>--%>
                     </div>
             </div>
 

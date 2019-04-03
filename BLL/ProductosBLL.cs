@@ -153,7 +153,11 @@ namespace BLL
 
         public static Decimal CalcularGanancias(Decimal precio, Decimal costo)
         {
-            return (((precio - costo) / costo) * 100);
+            decimal ganancia = (precio - costo);
+            decimal margen = (ganancia / precio) * 100;
+
+            return decimal.Round(margen, 2);
+           // return (((precio - costo) / costo) * 100);
         }
     }
 }
